@@ -20,6 +20,18 @@
         .social-icon {
             margin-right: 10px;
         }
+        .desktopleft, .right, .mobileleft {
+            padding: 20px;
+        }
+        .right {
+            padding-right: 50px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            color: black;
+        }
         .post-preview {
             border-bottom: 1px solid #ddd;
             padding: 20px 0;
@@ -41,17 +53,25 @@
             text-decoration: underline;
         }
         @media (max-width: 768px) {
-            .right {
-                padding-right: 0;
+            .desktopleft {
+                display: none;
             }
-            .post-preview {
-                padding: 10px 0;
+            .mobileleft, #mobiletop, #mobilephoto {
+                display: block;
             }
-            .post-title {
-                font-size: 20px;
+            .mobileleft {
+                padding: 20px;
             }
-            .post-excerpt {
-                font-size: 14px;
+            #mobilephoto {
+                width: 100%;
+            }
+        }
+        @media (min-width: 769px) {
+            .mobileleft, #mobiletop, #mobilephoto {
+                display: none;
+            }
+            .desktopleft, .right {
+                display: block;
             }
         }
     </style>
@@ -73,7 +93,7 @@
     <ul id="desktopnav">
         <li><a href="index.html">Home</a></li>
         <li><a href="posts.html">Posts</a></li>
-        <li><a href="recommendations.html">Recommendations</a></li>
+        <li><a class="active" href="recommendations.html">Recommendations</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="mailto:robertmtolan1@gmail.com"><i class="fas fa-envelope social-icon"></i>Email</a></li>
         <li><a href="https://github.com/robertmtolan" target="_blank"><i class="fab fa-github social-icon"></i>GitHub</a></li>
@@ -87,7 +107,7 @@
     <ul id="mobilenav">
         <li><a href="index.html">Home</a></li>
         <li><a href="posts.html">Posts</a></li>
-        <li><a href="recommendations.html">Recommendations</a></li>
+        <li><a class="active" href="recommendations.html">Recommendations</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="mailto:robertmtolan1@gmail.com"><i class="fas fa-envelope social-icon"></i>Email</a></li>
         <li><a href="https://github.com/robertmtolan" target="_blank"><i class="fab fa-github social-icon"></i>GitHub</a></li>
@@ -95,7 +115,7 @@
     </ul>
 </div>
 
-<div class="right" style="padding-right: 50px;">
+<div class="right">
     <h1>Recommendations</h1>
 
     <div class="post-preview">
@@ -106,8 +126,7 @@
 
 
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 </body>
 </html>
-
-
