@@ -8,9 +8,12 @@
     <title>Recommendations - Robert Tolan</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="icon" type="image/x-icon" href="/img/favicon2.ico?">
+    <link rel="icon" type="image/x-icon" href="/img/favicon2.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+        .social-icon {
+            margin-right: 10px;
+        }
         .post-preview {
             border-bottom: 1px solid #ddd;
             padding: 20px 0;
@@ -31,6 +34,21 @@
         .read-more:hover {
             text-decoration: underline;
         }
+
+        @media (max-width: 768px) {
+            .right {
+                padding-right: 0;
+            }
+            .post-preview {
+                padding: 10px 0;
+            }
+            .post-title {
+                font-size: 20px;
+            }
+            .post-excerpt {
+                font-size: 14px;
+            }
+        }
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -45,40 +63,69 @@
 </head>
 <body>
 
-<div class="content">
+<div class="desktopleft">
+    <img src="img/robert.jpg" id="desktopphoto" width="100%" align="top" alt="Robert Tolan">
+    <ul id="desktopnav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="posts.html">Posts</a></li>
+        <li><a href="recommendations.html">Recommendations</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="mailto:robertmtolan1@gmail.com"><i class="fas fa-envelope social-icon"></i>Email</a></li>
+        <li><a href="https://github.com/robertmtolan" target="_blank"><i class="fab fa-github social-icon"></i>GitHub</a></li>
+        <li><a href="https://twitter.com/Rob_Tolan" target="_blank"><i class="fab fa-twitter social-icon"></i>Twitter</a></li>
+    </ul>
+</div>
+
+<h1 id="mobiletop">Robert Tolan</h1>
+<img src="img/robert.jpg" id="mobilephoto" width="100%" align="top" alt="Robert Tolan">
+<div class="mobileleft">
+    <ul id="mobilenav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="posts.html">Posts</a></li>
+        <li><a href="recommendations.html">Recommendations</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="mailto:robertmtolan1@gmail.com"><i class="fas fa-envelope social-icon"></i>Email</a></li>
+        <li><a href="https://github.com/robertmtolan" target="_blank"><i class="fab fa-github social-icon"></i>GitHub</a></li>
+        <li><a href="https://twitter.com/Rob_Tolan" target="_blank"><i class="fab fa-twitter social-icon"></i>Twitter</a></li>
+    </ul>
+</div>
+
+<div class="right" style="padding-right: 50px;">
     <h1>Recommendations</h1>
 
     <div class="post-preview">
-        <h2 class="Recommended Books"> Books</h2>
-        <p class="post-excerpt"> Some books that I think are worth reading.</p>
-        <a class="read-more" href="Recommended-Books.html">Read More</a>
+        <h2 class="Recommended Books">Books</h2>
+        <p class="post-excerpt">Some books that I think are worth reading.</p>
+        <a class="read-more" href="recommended-books.html">Read More</a>
     </div>
 
     <div class="post-preview">
-        <h2 class="Recommended Essays"> Essays</h2>
-        <p class="post-excerpt"> Insightful essays!</p>
-        <a class="read-more" href="Recommended-Essays.html">Read More</a>
+        <h2 class="Recommended Essays">Essays</h2>
+        <p class="post-excerpt">Insightful essays!</p>
+        <a class="read-more" href="recommended-essays.html">Read More</a>
     </div>
 
      <div class="post-preview">
-        <h2 class="Recommended Blogs"> Blogs</h2>
-        <p class="post-excerpt"> Blogs that deserve attention.</p>
-        <a class="read-more" href="Recommended-Blogs.html">Read More</a>
+        <h2 class="Recommended Blogs">Blogs</h2>
+        <p class="post-excerpt">Blogs that deserve attention.</p>
+        <a class="read-more" href="recommended-blogs.html">Read More</a>
     </div>
 
       <div class="post-preview">
-        <h2 class="Recommended Publications"> Publications</h2>
-        <p class="post-excerpt"> I follow these papers and journals closely.</p>
-        <a class="read-more" href="Recommended-Publications.html">Read More</a>
+        <h2 class="Recommended Publications">Publications</h2>
+        <p class="post-excerpt">I follow these papers and journals closely.</p>
+        <a class="read-more" href="recommended-publications.html">Read More</a>
     </div>
 
      <div class="post-preview">
-        <h2 class="Gems of the Internet"> Gems of the Internet</h2>
-        <p class="post-excerpt"> Some useful websites and tools I have discovered.</p>
-        <a class="read-more" href="Recommended-Websites.html">Read More</a>
+        <h2 class="Gems of the Internet">Gems of the Internet</h2>
+        <p class="post-excerpt">Some useful websites and tools I have discovered.</p>
+        <a class="read-more" href="recommended-websites.html">Read More</a>
     </div>
 
 </div>
 
+<footer>
+</footer>
 </body>
 </html>

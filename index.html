@@ -13,11 +13,86 @@
     <title>Robert Tolan</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="icon" type="image/x-icon" href="/img/favicon2.ico?">
+    <link rel="icon" type="image/x-icon" href="/img/favicon2.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        .social-icon {
-            margin-right: 10px;
+        body {
+            font-family: "Computer Modern", sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .desktopleft, .mobileleft {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .desktopleft img, #mobilephoto {
+            width: 100%;
+            display: block;
+        }
+
+        .desktopleft ul, .mobileleft ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .desktopleft ul li, .mobileleft ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        .desktopleft ul li a, .mobileleft ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .desktopleft ul li a.active, .mobileleft ul li a.active {
+            font-weight: bold;
+            color: #8B008B;
+        }
+
+        .right {
+            margin-top: 120px; /* Adjust for fixed header */
+            padding: 20px;
+            background-color: white;
+        }
+
+        .right h1 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .right p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .desktopleft, .mobileleft {
+                position: static;
+                width: 100%;
+            }
+            .right {
+                margin-top: 0;
+                padding: 10px;
+            }
+            .right h1 {
+                font-size: 20px;
+            }
+            .right p {
+                font-size: 14px;
+            }
         }
     </style>
 
@@ -34,7 +109,7 @@
 <body>
 
 <div class="desktopleft">
-    <img src="img/robert.jpg" id="desktopphoto" width="100%" align="top">
+    <img src="img/robert.jpg" id="desktopphoto" alt="Robert Tolan">
     <ul id="desktopnav">
         <li><a class="active" href="index.html">Home</a></li>
         <li><a href="posts.html">Posts</a></li>
@@ -47,26 +122,28 @@
 </div>
 
 <h1 id="mobiletop">Robert Tolan</h1>
-<img src="img/robert.jpg" id="mobilephoto" width="100%" align="top">
+<img src="img/robert.jpg" id="mobilephoto" alt="Robert Tolan">
 <div class="mobileleft">
     <ul id="mobilenav">
         <li><a class="active" href="index.html">Home</a></li>
         <li><a href="posts.html">Posts</a></li>
-         <li><a href="projects.html">Projects</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="mailto:robertmtolan1@gmail.com"><i class="fas fa-envelope social-icon"></i>Email</a></li>
         <li><a href="https://github.com/robertmtolan" target="_blank"><i class="fab fa-github social-icon"></i>GitHub</a></li>
         <li><a href="https://twitter.com/Rob_Tolan" target="_blank"><i class="fab fa-twitter social-icon"></i>Twitter</a></li>
     </ul>
 </div>
 
-<div class="right" style="padding-right: 50px;">
+<div class="right">
     <h1 id="desktoptop">Robert Tolan</h1>
     <hr class="mobilehr">
     <p>I currently work in an investment fund in New York City. I am from Foxford, Co. Mayo, Ireland and have also lived in Dublin, London and Oslo.</p>
-    <p>I took a gap year to work on housing policy with the support of <a href="https://en.wikipedia.org/wiki/Tyler_Cowen" target="_blank">Tyler Cowen</a> through his <a href="https://www.mercatus.org/emergent-ventures" target="_blank">Emergent Ventures</a> programme at the <a href="https://www.mercatus.org/" target="_blank">Mercatus Centre</a> and from <a href="https://www.joinef.com/" target="_blank">Entrepreneur First's</a> <a href="https://www.polaris-fellowship.com/" target="_blank">Polaris Fellowship</a>. During that year, I founded a <a href="https://betterplanning.ie/" target="_blank">housing policy think tank</a>. I also spent time as a freelance contributor in <a href="https://www.economist.com/" target="_blank">The Economist's</a> Britain section</p>
-    <p> I enjoy doing projects and I am currently seeking new collaborators. I am interested in community building, urbanism and <a href="https://www.theatlantic.com/science/archive/2019/07/we-need-new-science-progress/594946/" target="_blank">Progress Studies</a> as well as LLMs. If any of this is of interest, please email.</p>
+    <p>I took a gap year to work on housing policy with the support of <a href="https://en.wikipedia.org/wiki/Tyler_Cowen" target="_blank">Tyler Cowen</a> through his <a href="https://www.mercatus.org/emergent-ventures" target="_blank">Emergent Ventures</a> programme at the <a href="https://www.mercatus.org/" target="_blank">Mercatus Centre</a> and from <a href="https://www.joinef.com/" target="_blank">Entrepreneur First's</a> <a href="https://www.polaris-fellowship.com/" target="_blank">Polaris Fellowship</a>. During that year, I founded a <a href="https://betterplanning.ie/" target="_blank">housing policy think tank</a>. I also spent time as a freelance contributor in <a href="https://www.economist.com/" target="_blank">The Economist's</a> Britain section.</p>
+    <p>I enjoy doing projects and I am currently seeking new collaborators. I am interested in community building, urbanism and <a href="https://www.theatlantic.com/science/archive/2019/07/we-need-new-science-progress/594946/" target="_blank">Progress Studies</a> as well as LLMs. If any of this is of interest, please email.</p>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 </body>
 </html>
+
 
