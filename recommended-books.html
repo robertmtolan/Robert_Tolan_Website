@@ -11,11 +11,49 @@
     <link rel="icon" type="image/x-icon" href="/img/favicon2.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Computer Modern', serif;
+            background-color: white;
+        }
         .social-icon {
             margin-right: 10px;
         }
+        .desktopleft, .right, .mobileleft {
+            padding: 20px;
+        }
+        .right {
+            padding-right: 50px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .desktopleft {
+                display: none;
+            }
+            .mobileleft, #mobiletop, #mobilephoto {
+                display: block;
+            }
+            .mobileleft {
+                padding: 20px;
+            }
+            #mobilephoto {
+                width: 100%;
+                height: auto;
+            }
+        }
+        @media (min-width: 769px) {
+            .mobileleft, #mobiletop, #mobilephoto {
+                display: none;
+            }
+            .desktopleft, .right {
+                display: block;
+            }
+        }
     </style>
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGRVMPLY74"></script>
     <script>
@@ -29,7 +67,7 @@
 <body>
 
 <div class="desktopleft">
-    <img src="img/robert.jpg" id="desktopphoto" width="100%" align="top" alt="Robert Tolan">
+    <img src="img/robert.jpg" id="desktopphoto" alt="Robert Tolan">
     <ul id="desktopnav">
         <li><a href="index.html">Home</a></li>
         <li><a href="posts.html">Posts</a></li>
@@ -41,7 +79,7 @@
 </div>
 
 <h1 id="mobiletop">Robert Tolan</h1>
-<img src="img/robert.jpg" id="mobilephoto" width="100%" align="top" alt="Robert Tolan">
+<img src="img/robert.jpg" id="mobilephoto" alt="Robert Tolan">
 <div class="mobileleft">
     <ul id="mobilenav">
         <li><a href="index.html">Home</a></li>
@@ -52,6 +90,7 @@
         <li><a href="https://twitter.com/Rob_Tolan" target="_blank"><i class="fab fa-twitter social-icon"></i>X</a></li>
     </ul>
 </div>
+
 
 <div class="right" style="padding-right: 50px;">
     <h1>Books</h1>
