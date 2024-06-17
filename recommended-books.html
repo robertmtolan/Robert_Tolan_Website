@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Recommended Books - Robert Tolan">
-    <meta name="keywords" content="Robert Tolan, Recommended Books">
-    <title>Recommended Books - Robert Tolan</title>
+    <meta name="description" content="Robert's Recommendations - Robert Tolan">
+    <meta name="keywords" content="Robert Tolan, Recommendations">
+    <title>Recommendations - Robert Tolan</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="icon" type="image/x-icon" href="/img/favicon2.ico">
@@ -26,9 +26,31 @@
         .right {
             padding-right: 50px;
         }
-        img {
-            width: 100%;
-            height: auto;
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            color: black;
+        }
+        .post-preview {
+            border-bottom: 1px solid #ddd;
+            padding: 20px 0;
+        }
+        .post-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .post-excerpt {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .read-more {
+            font-size: 16px;
+            color: #8B008B;
+            text-decoration: none;
+        }
+        .read-more:hover {
+            text-decoration: underline;
         }
         @media (max-width: 768px) {
             .desktopleft {
@@ -42,7 +64,6 @@
             }
             #mobilephoto {
                 width: 100%;
-                height: auto;
             }
         }
         @media (min-width: 769px) {
@@ -54,6 +75,7 @@
             }
         }
     </style>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGRVMPLY74"></script>
     <script>
@@ -67,7 +89,7 @@
 <body>
 
 <div class="desktopleft">
-    <img src="img/robert.jpg" id="desktopphoto" alt="Robert Tolan">
+    <img src="img/robert.jpg" id="desktopphoto" width="100%" align="top" alt="Robert Tolan">
     <ul id="desktopnav">
         <li><a href="index.html">Home</a></li>
         <li><a href="posts.html">Posts</a></li>
@@ -79,7 +101,7 @@
 </div>
 
 <h1 id="mobiletop">Robert Tolan</h1>
-<img src="img/robert.jpg" id="mobilephoto" alt="Robert Tolan">
+<img src="img/robert.jpg" id="mobilephoto" width="100%" align="top" alt="Robert Tolan">
 <div class="mobileleft">
     <ul id="mobilenav">
         <li><a href="index.html">Home</a></li>
@@ -91,10 +113,10 @@
     </ul>
 </div>
 
+<div class="right">
+    <h1>Recommended Books</h1>
 
-<div class="right" style="padding-right: 50px;">
-    <h1>Books</h1>
-    <p><em>These are in no particular order of preference. I appreciate recommendations.</em></p>
+     <p><em>These are in no particular order of preference. I appreciate recommendations.</em></p>
     <ul>
         <li><a href="https://blackwells.co.uk/bookshop/product/The-Mountains-of-My-Life-by-Walter-Bonatti-Robert-Marshall/9780141192918" target="_blank">The Mountains of My Life - Walter Bonatti</a> The reflections of one of the world's seminal mountaineers.</li>
         <li><a href="https://blackwells.co.uk/bookshop/product/9780141984612" target="_blank">Narcissus and Goldmund - Hermann Hesse</a> Thanks to <a href="https://pioneer.app/founders/tom-mccarthy" target="_blank">Tom McCarthy</a> for the recommendation.</li>
@@ -128,8 +150,9 @@
         <li><a href="https://blackwells.co.uk/bookshop/product/Independent-People-by-Halldr-Laxness-author-J-A-Thompson-translator-John-Freeman-writer-of-introduction/9781841593975" target="_blank">Independent People - Halldór Laxness</a> The pinnacle of Nordic literature and a feat of translation.</li>
         <li><a href="https://blackwells.co.uk/bookshop/product/The-Complete-Essays-by-Michel-de-Montaigne-author-M-A-Screech-translator/9780140446043" target="_blank">The Complete Essays - Michel de Montaigne</a> The seminal work behind one of the most powerful forms of writing.</li>
     </ul>
+
 </div>
-</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 </body>
 </html>
