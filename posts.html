@@ -8,81 +8,41 @@
     <title>Posts - Robert Tolan</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="icon" type="image/x-icon" href="/img/favicon2.ico?">
+    <link rel="icon" type="image/x-icon" href="/img/favicon2.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        body {
-            margin: 0;
+        .section-content {
+            display: none;
             padding: 0;
-            font-family: 'Computer Modern', serif;
-            background-color: white;
+            margin-top: -10px;
         }
-        .social-icon {
-            margin-right: 10px;
+        .section-content.active {
+            display: block;
         }
-        .desktopleft, .right, .mobileleft {
-            padding: 20px;
-        }
-        .right {
-            padding-right: 50px;
+        .section-title {
+            cursor: pointer;
+            margin-bottom: 10px;
         }
         .post-preview {
-            border-bottom: 1px solid #ddd;
             padding: 20px 0;
         }
         .post-title {
             font-size: 24px;
             margin-bottom: 10px;
         }
-        .post-excerpt {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
         .read-more {
-            font-size: 16px;
             color: #8B008B;
             text-decoration: none;
         }
         .read-more:hover {
             text-decoration: underline;
         }
-        @media (max-width: 768px) {
-            .desktopleft {
-                display: none;
-            }
-            .mobileleft, #mobiletop, #mobilephoto {
-                display: block;
-            }
-            .mobileleft {
-                padding: 20px;
-            }
-            #mobilephoto {
-                width: 100%;
-            }
-        }
-        @media (min-width: 769px) {
-            .mobileleft, #mobiletop, #mobilephoto {
-                display: none;
-            }
-            .desktopleft, .right {
-                display: block;
-            }
-        }
     </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGRVMPLY74"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-XGRVMPLY74');
-    </script>
 </head>
 <body>
 
 <div class="desktopleft">
-    <img src="img/robert.jpg" id="desktopphoto" width="100%" align="top">
+    <img src="img/robert.jpg" id="desktopphoto" width="100%" align="top" alt="Robert Tolan">
     <ul id="desktopnav">
         <li><a href="index.html">Home</a></li>
         <li><a class="active" href="posts.html">Posts</a></li>
@@ -94,40 +54,34 @@
 </div>
 
 <h1 id="mobiletop">Robert Tolan</h1>
-<img src="img/robert.jpg" id="mobilephoto" width="100%" align="top">
+<img src="img/robert.jpg" id="mobilephoto" width="100%" align="top" alt="Robert Tolan">
 <div class="mobileleft">
     <ul id="mobilenav">
         <li><a href="index.html">Home</a></li>
         <li><a class="active" href="posts.html">Posts</a></li>
-        <li><a href="projects.html">Projects</a></li>
         <li><a href="recommendations.html">Recommendations</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="mailto:robertmtolan1@gmail.com"><i class="fas fa-envelope social-icon"></i>Email</a></li>
         <li><a href="https://twitter.com/Rob_Tolan" target="_blank"><i class="fab fa-twitter social-icon"></i>X</a></li>
     </ul>
 </div>
 
 <div class="right">
-    <h1 id="desktoptop">Posts</h1>
-    <hr class="mobilehr">
+    <h1>Posts</h1>
 
-    <!-- First Post -->
     <div class="post-preview">
         <h2 class="post-title">The Inishkea Islands Atlanticist</h2>
-        <p class="post-excerpt">
-            An Irish cult and the Financial Times comment section.
-        </p>
+        <p>An Irish cult and the Financial Times comment section.</p>
         <a class="read-more" href="https://robertsreflections.substack.com/p/the-inishkea-islands-atlanticist" target="_blank">Read More</a>
     </div>
 
-    <!-- Second Post -->
     <div class="post-preview">
-        <h2 class="post-title">A Simple and Elegant Response to Ireland’s Housing Crisis</h2>
-        <p class="post-excerpt">An essay that appeared in <a href="https://www.thefitzwilliam.com/" target="_blank">The Fitzwilliam</a>, an Irish journal of ideas, on what became <a href="https://betterplanning.ie/street-plans/" target="_blank">Street Plans</a>. The original idea was heavily influenced by England's <a href="https://yimbyalliance.org/street-votes/" target="_blank">Street Votes proposal</a>.
-        </p>
+        <h2 class="post-title">A Simple and Elegant Response to Ireland's Housing Crisis</h2>
+        <p>An essay that appeared in <a href="https://www.thefitzwilliam.com/" target="_blank">The Fitzwilliam</a>, an Irish journal of ideas, on what became <a href="https://betterplanning.ie/street-plans/" target="_blank">Street Plans</a>. The original idea was heavily influenced by England's <a href="https://yimbyalliance.org/street-votes/" target="_blank">Street Votes proposal</a>.</p>
         <a class="read-more" href="https://www.thefitzwilliam.com/p/a-simple-and-elegant-response-to" target="_blank">Read More</a>
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 </body>
 </html>
-

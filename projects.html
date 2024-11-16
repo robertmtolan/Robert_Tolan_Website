@@ -11,74 +11,19 @@
     <link rel="icon" type="image/x-icon" href="/img/favicon2.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        body {
-            margin: 0;
+        .section-content {
+            display: none;
             padding: 0;
-            font-family: 'Computer Modern', serif;
-            background-color: white;
+            margin-top: -10px;
         }
-        .social-icon {
-            margin-right: 10px;
+        .section-content.active {
+            display: block;
         }
-        .desktopleft, .right, .mobileleft {
-            padding: 20px;
-        }
-        .right {
-            padding-right: 50px;
-        }
-        .post-preview {
-            border-bottom: 1px solid #ddd;
-            padding: 20px 0;
-        }
-        .post-title {
-            font-size: 24px;
+        .section-title {
+            cursor: pointer;
             margin-bottom: 10px;
-        }
-        .post-excerpt {
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        .read-more {
-            font-size: 16px;
-            color: #8B008B;
-            text-decoration: none;
-        }
-        .read-more:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-            .desktopleft {
-                display: none;
-            }
-            .mobileleft, #mobiletop, #mobilephoto {
-                display: block;
-            }
-            .mobileleft {
-                padding: 20px;
-            }
-            #mobilephoto {
-                width: 100%;
-            }
-        }
-        @media (min-width: 769px) {
-            .mobileleft, #mobiletop, #mobilephoto {
-                display: none;
-            }
-            .desktopleft, .right {
-                display: block;
-            }
         }
     </style>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGRVMPLY74"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-XGRVMPLY74');
-    </script>
 </head>
 <body>
 
@@ -107,19 +52,42 @@
     </ul>
 </div>
 
-<div class="right" style="padding-right: 50px;">
+<div class="right">
     <h1>Projects</h1>
-    <ul>
-        <li>As of June 2024, I am currently seeking collaborators for new projects. If this is of interest, please <a href="mailto:robertmtolan1@gmail.com">email</a> me.</li>
-        <li>In May 2024, I started a <a href="https://robertsreflections.substack.com/">blog</a>, a pursuit inspired by this <a href="https://www.henrikkarlsson.xyz/p/search-query">post</a> by <a href="https://www.henrikkarlsson.xyz/about">Henrik Karlsson</a>.</li>
-        <li>During a gap year in 2022/3, I founded the <a href="https://betterplanning.ie/" target="_blank">Better Planning Alliance</a> to research the potential of supply-side housing policies in Ireland. I modelled a number of proposed policies, including <a href="https://betterplanning.ie/street-plans/" target="_blank">Street Plans</a> and <a href="https://betterplanning.ie/adus-for-ireland/" target="_blank">Accessory Dwelling Units</a>, that could help ease Ireland's housing shortage. This was inspired by the <a href="https://worksinprogress.co/issue/the-housing-theory-of-everything/" target="_blank">Housing Theory of Everything</a> which states the developed world's ailments are easily treated by solving housing shortages, an idea due to John Myers, Sam Bowman and Ben Southwood. Reforming planning in Ireland has the potential to turn development from a zero-sum to a positive-sum game. Along the way I met so many interesting people and I acquired a co-founder <a href="https://twitter.com/o_mcpartlin" target="_blank">Seán O'Neill McPartlin</a>, who now leads the BPA.</li>
-        <li>The project led to my being quoted in <a href="https://www.economist.com/international/2023/09/06/the-growing-global-movement-to-restrain-house-prices" target="_blank">The Economist</a> on Irish housing policy and some coverage in the <a href="https://www.irishtimes.com/opinion/2023/09/14/street-plans-could-deliver-14000-new-homes-annually-and-help-solve-housing-crisis/" target="_blank">Irish Times</a> as well as <a href="https://thecurrency.news/articles/125922/a-new-route-through-planning-that-could-lead-to-up-to-447000-additional-homes/" target="_blank">The Currency</a>.</li>
-        <li>Researching such policies from a farm in the West of Ireland involved extensive use of Google Earth, Google Maps, and spreadsheets in addition to giving me exposure to civic hacking, fundraising, and alliance building. I was fortunate to receive extensive mentorship from <a href="https://x.com/johnrmyers?lang=en" target="_blank">John Myers</a>, <a href="https://twitter.com/freddie_poser" target="_blank">Freddie Poser</a>, <a href="https://twitter.com/bswud" target="_blank">Ben Southwood</a>, <a href="https://twitter.com/s8mb" target="_blank">Sam Bowman</a> and <a href="https://x.com/_arnauds_" target="_blank">Arnaud Schenk</a>. I am grateful for the support from <a href="https://twitter.com/tylercowen" target="_blank">Tyler Cowen</a>, <a href="https://twitter.com/ns_whit" target="_blank">Nick Whitaker</a> and <a href="https://x.com/_tamarawinter" target="_blank">Tamara Winter</a>.</li>
-        <li>Funding was received from the Mercatus Center through their <a href="https://www.mercatus.org/emergent-ventures" target="_blank">Emergent Ventures</a> program and <a href="https://www.joinef.com/" target="_blank">Entrepreneur First</a> through their <a href="https://www.polaris-fellowship.com/" target="_blank">Polaris Fellowship</a>.</p> </li>
-    </ul>
+
+    <div class="post-preview">
+        <h2 class="section-title">Blogging</h2>
+        <div class="section-content">
+            <ul>
+                <li>In May 2024, I started a <a href="https://robertsreflections.substack.com/">blog</a>, a pursuit inspired by this <a href="https://www.henrikkarlsson.xyz/p/search-query">post</a> by <a href="https://www.henrikkarlsson.xyz/about">Henrik Karlsson</a>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="post-preview">
+        <h2 class="section-title">Housing Policy</h2>
+        <div class="section-content">
+            <ul>
+                <li>During a gap year in 2022/3, I founded the <a href="https://betterplanning.ie/" target="_blank">Better Planning Alliance</a> to research the potential of supply-side housing policies in Ireland. I modelled a number of proposed policies, including <a href="https://betterplanning.ie/street-plans/" target="_blank">Street Plans</a> and <a href="https://betterplanning.ie/adus-for-ireland/" target="_blank">Accessory Dwelling Units</a>, that could help ease Ireland's housing shortage. This was inspired by the <a href="https://worksinprogress.co/issue/the-housing-theory-of-everything/" target="_blank">Housing Theory of Everything</a> which states the developed world's ailments are easily treated by solving housing shortages, an idea due to John Myers, Sam Bowman and Ben Southwood. Reforming planning in Ireland has the potential to turn development from a zero-sum to a positive-sum game. Along the way I met so many interesting people and I acquired a co-founder <a href="https://twitter.com/o_mcpartlin" target="_blank">Seán O'Neill McPartlin</a>, who now leads the BPA.</li>
+                <li>The project led to my being quoted in <a href="https://www.economist.com/international/2023/09/06/the-growing-global-movement-to-restrain-house-prices" target="_blank">The Economist</a> on Irish housing policy and some coverage in the <a href="https://www.irishtimes.com/opinion/2023/09/14/street-plans-could-deliver-14000-new-homes-annually-and-help-solve-housing-crisis/" target="_blank">Irish Times</a> as well as <a href="https://thecurrency.news/articles/125922/a-new-route-through-planning-that-could-lead-to-up-to-447000-additional-homes/" target="_blank">The Currency</a>.</li>
+                <li>Researching such policies from a farm in the West of Ireland involved extensive use of Google Earth, Google Maps, and spreadsheets in addition to giving me exposure to civic hacking, fundraising, and alliance building. I was fortunate to receive extensive mentorship from <a href="https://x.com/johnrmyers?lang=en" target="_blank">John Myers</a>, <a href="https://twitter.com/freddie_poser" target="_blank">Freddie Poser</a>, <a href="https://twitter.com/bswud" target="_blank">Ben Southwood</a>, <a href="https://twitter.com/s8mb" target="_blank">Sam Bowman</a> and <a href="https://x.com/_arnauds_" target="_blank">Arnaud Schenk</a>. I am grateful for the support from <a href="https://twitter.com/tylercowen" target="_blank">Tyler Cowen</a>, <a href="https://twitter.com/ns_whit" target="_blank">Nick Whitaker</a> and <a href="https://x.com/_tamarawinter" target="_blank">Tamara Winter</a>.</li>
+                <li>Funding was received from the Mercatus Center through their <a href="https://www.mercatus.org/emergent-ventures" target="_blank">Emergent Ventures</a> program and <a href="https://www.joinef.com/" target="_blank">Entrepreneur First</a> through their <a href="https://www.polaris-fellowship.com/" target="_blank">Polaris Fellowship</a>.</li>
+            </ul>
+        </div>
+    </div>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-<footer>
-</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.section-title');
+    sections.forEach(section => {
+        section.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            content.classList.toggle('active');
+        });
+    });
+});
+</script>
 </body>
 </html>
