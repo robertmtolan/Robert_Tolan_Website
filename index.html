@@ -31,11 +31,59 @@
             margin-bottom: 10px;
         }
         .read-more {
-            color: #8B008B;
+            color: #2D54AB;
             text-decoration: none;
         }
-        .read-more:hover {
-            text-decoration: underline;
+
+        .right a {
+            color: #2D54AB;
+            text-decoration: none;
+            position: relative;
+            border-bottom: 1px dotted rgba(45, 84, 171, 0.5);
+            transition: background 0.2s ease;
+        }
+
+        .right a:hover {
+            background: rgba(45, 84, 171, 0.1);
+        }
+
+        .right a[title]:hover::after {
+            content: attr(title);
+            position: absolute;
+            left: 0;
+            top: 100%;
+            margin-top: 5px;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 0.9em;
+            width: max-content;
+            max-width: 300px;
+            z-index: 1000;
+            color: black;
+        }
+
+        #desktopnav a, #mobilenav a {
+            color: #2D54AB;
+            text-decoration: none;
+            transition: background 0.2s ease;
+            padding: 2px 5px;
+        }
+
+        #desktopnav a:hover, #mobilenav a:hover {
+            background: rgba(45, 84, 171, 0.1);
+        }
+
+        .social-icon {
+            margin-right: 10px;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover .social-icon {
+            opacity: 1;
         }
     </style>
 </head>
@@ -69,7 +117,7 @@
 <div class="right">
     <h1>Robert Tolan</h1>
     <p>I currently work in an investment fund in New York City. I am from Foxford, Co. Mayo, Ireland and have also lived in Dublin, London and Oslo.</p>
-    <p>I took a gap year to work on housing policy with the support of <a href="https://en.wikipedia.org/wiki/Tyler_Cowen" target="_blank">Tyler Cowen</a> through his <a href="https://www.mercatus.org/emergent-ventures" target="_blank">Emergent Ventures</a> programme at the <a href="https://www.mercatus.org/" target="_blank">Mercatus Centre</a> and from <a href="https://www.joinef.com/" target="_blank">Entrepreneur First's</a> <a href="https://www.polaris-fellowship.com/" target="_blank">Polaris Fellowship</a>. During that year, I founded a <a href="https://betterplanning.ie/" target="_blank">housing policy think tank</a>. I also spent time as a freelance contributor in <a href="https://www.economist.com/" target="_blank">The Economist's</a> Britain section.</p>
+    <p>I took a gap year to work on housing policy with the support of <a href="https://en.wikipedia.org/wiki/Tyler_Cowen" target="_blank" title="American economist and author. Professor at George Mason University. Founder of Marginal Revolution and Emergent Ventures.">Tyler Cowen</a> through his <a href="https://www.mercatus.org/emergent-ventures" target="_blank" title="Fellowship program supporting entrepreneurs, researchers, and social changemakers. Founded in 2018.">Emergent Ventures</a> programme at the <a href="https://www.mercatus.org/" target="_blank" title="Research center at George Mason University focusing on market-oriented ideas and policy solutions.">Mercatus Centre</a> and from <a href="https://www.joinef.com/" target="_blank" title="Global talent investor that helps individuals build technology companies.">Entrepreneur First's</a> <a href="https://www.polaris-fellowship.com/" target="_blank" title="Fellowship supporting ambitious individuals.">Polaris Fellowship</a>. During that year, I founded a <a href="https://betterplanning.ie/" target="_blank" title="Think tank focused on housing policy reform and supply-side solutions in Ireland.">housing policy think tank</a>. I also spent time as a freelance contributor in <a href="https://www.economist.com/" target="_blank" title="Leading international weekly newspaper focusing on current affairs, economics, and politics. Founded 1843.">The Economist's</a> Britain section.</p>
     <p>I am interested in community building, urbanism and LLMs. Please feel free to email me.</p>
 </div>
 

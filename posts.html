@@ -31,11 +31,42 @@
             margin-bottom: 10px;
         }
         .read-more {
-            color: #8B008B;
+            color: #2D54AB;
             text-decoration: none;
         }
-        .read-more:hover {
-            text-decoration: underline;
+
+        .right a {
+            color: #2D54AB;
+            text-decoration: none;
+            position: relative;
+            border-bottom: 1px dotted rgba(45, 84, 171, 0.5);
+            transition: background 0.2s ease;
+        }
+
+        .right a:hover {
+            background: rgba(45, 84, 171, 0.1);
+        }
+
+        .right a[data-info]:hover::after {
+            content: attr(data-info);
+            position: absolute;
+            left: 0;
+            top: 100%;
+            margin-top: 5px;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-size: 0.9em;
+            width: max-content;
+            max-width: 300px;
+            z-index: 1000;
+            color: black;
+        }
+
+        .read-more {
+            border-bottom: none;
         }
     </style>
 </head>
@@ -77,7 +108,7 @@
 
     <div class="post-preview">
         <h2 class="post-title">A Simple and Elegant Response to Ireland's Housing Crisis</h2>
-        <p>An essay that appeared in <a href="https://www.thefitzwilliam.com/" target="_blank">The Fitzwilliam</a>, an Irish journal of ideas, on what became <a href="https://betterplanning.ie/street-plans/" target="_blank">Street Plans</a>. The original idea was heavily influenced by England's <a href="https://yimbyalliance.org/street-votes/" target="_blank">Street Votes proposal</a>.</p>
+        <p>An essay that appeared in <a href="https://www.thefitzwilliam.com/" target="_blank" data-info="Irish journal of ideas focusing on policy and culture">The Fitzwilliam</a> on what became <a href="https://betterplanning.ie/street-plans/" target="_blank" data-info="Policy proposal for improving housing supply in Ireland">Street Plans</a>. The original idea was heavily influenced by England's <a href="https://yimbyalliance.org/street-votes/" target="_blank" data-info="UK housing reform proposal for community-led development">Street Votes proposal</a>.</p>
         <a class="read-more" href="https://www.thefitzwilliam.com/p/a-simple-and-elegant-response-to" target="_blank">Read More</a>
     </div>
 </div>
