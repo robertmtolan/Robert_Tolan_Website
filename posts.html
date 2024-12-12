@@ -37,39 +37,51 @@
         .read-more:hover {
             text-decoration: underline;
         }
-       @media (max-width: 768px) {
+@media (max-width: 768px) {
     body, html {
         background: #ffffff;
-    }
-    #mobiletop, #mobilephoto, .mobileleft, .right, #mobilenav {
-        background: #ffffff;
         position: relative;
-        z-index: 2;
+        min-height: 100%;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    .desktopleft {
+        display: none !important;
+    }
+    #mobilephoto {
+        width: 100%;
+        max-width: 300px;
+        display: block;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
     }
     .mobileleft {
-        display: block;
         width: 100%;
-        clear: both;
+        position: relative;
+        z-index: 1;
+        margin: 20px 0;
+        padding: 0;
         background: #ffffff;
     }
     #mobilenav {
-        display: flex;
-        flex-direction: column;
-        padding: 0;
+        position: relative;
+        z-index: 1;
+        background: #ffffff;
+        width: 100%;
         margin: 0;
+        padding: 0;
         list-style: none;
+    }
+    .right {
+        position: relative;
+        z-index: 1;
         background: #ffffff;
-    }
-    #mobilephoto {
-        max-width: 300px;
-        margin: 0 auto;
-        display: block;
-    }
-    .post-preview {
+        width: 100%;
+        margin-top: 20px;
         clear: both;
-        background: #ffffff;
     }
-    .section-content {
+    * {
         background: #ffffff;
     }
 }
