@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="icon" type="image/x-icon" href="/img/favicon2.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
+     <style>
         .section-content {
             display: none;
             padding: 0;
@@ -23,19 +23,61 @@
             cursor: pointer;
             margin-bottom: 10px;
         }
+        .post-preview {
+            padding: 20px 0;
+        }
+        .post-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .read-more {
+            color: #8B008B;
+            text-decoration: none;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+        }
         @media (max-width: 768px) {
+            body {
+                background: #ffffff;
+            }
+            #mobiletop {
+                position: relative;
+                z-index: 2;
+                background: #ffffff;
+            }
             #mobilephoto {
                 position: relative;
-                z-index: 1;
+                z-index: 2;
+                background: #ffffff;
             }
             .mobileleft {
                 position: relative;
-                z-index: 1;
+                z-index: 2;
+                background: #ffffff;
+                padding: 10px;
+                margin: -10px;
+            }
+            #mobilenav {
+                background: #ffffff;
+                position: relative;
+                z-index: 2;
             }
             .right {
                 position: relative;
-                z-index: 1;
+                z-index: 2;
                 background: #ffffff;
+            }
+            .container {
+                background: #ffffff;
+                position: relative;
+                z-index: 1;
+            }
+            #mobilenav a {
+                background: #ffffff;
+            }
+            .desktopleft {
+                display: none !important;
             }
         }
     </style>

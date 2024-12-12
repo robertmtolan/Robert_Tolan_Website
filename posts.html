@@ -34,26 +34,54 @@
             color: #8B008B;
             text-decoration: none;
         }
-         .read-more:hover {
+        .read-more:hover {
             text-decoration: underline;
         }
         @media (max-width: 768px) {
+            body {
+                background: #ffffff;
+            }
+            #mobiletop {
+                position: relative;
+                z-index: 2;
+                background: #ffffff;
+            }
             #mobilephoto {
                 position: relative;
-                z-index: 1;
+                z-index: 2;
+                background: #ffffff;
             }
             .mobileleft {
                 position: relative;
-                z-index: 1;
+                z-index: 2;
+                background: #ffffff;
+                padding: 10px;
+                margin: -10px;
+            }
+            #mobilenav {
+                background: #ffffff;
+                position: relative;
+                z-index: 2;
             }
             .right {
                 position: relative;
-                z-index: 1;
+                z-index: 2;
                 background: #ffffff;
+            }
+            .container {
+                background: #ffffff;
+                position: relative;
+                z-index: 1;
+            }
+            #mobilenav a {
+                background: #ffffff;
+            }
+            .desktopleft {
+                display: none !important;
             }
         }
     </style>
-       <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGRVMPLY74"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
