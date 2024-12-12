@@ -23,13 +23,36 @@
             cursor: pointer;
             margin-bottom: 10px;
         }
-        @media (max-width: 768px) {
-    html, body {
+       @media (max-width: 768px) {
+    body, html {
         background: #ffffff;
     }
-    #mobilephoto, .mobileleft, .right {
+    #mobiletop, #mobilephoto, .mobileleft, .right, #mobilenav {
+        background: #ffffff;
         position: relative;
         z-index: 2;
+    }
+    .mobileleft {
+        display: block;
+        width: 100%;
+        clear: both;
+        background: #ffffff;
+    }
+    #mobilenav {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        background: #ffffff;
+    }
+    #mobilephoto {
+        max-width: 300px;
+        margin: 0 auto;
+        display: block;
+    }
+    .post-preview {
+        clear: both;
         background: #ffffff;
     }
     .section-content {
