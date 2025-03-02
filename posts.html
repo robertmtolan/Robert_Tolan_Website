@@ -29,6 +29,16 @@
         .post-title {
             font-size: 24px;
             margin-bottom: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        .post-content {
+            transition: max-height 0.3s ease-out;
+            max-height: 1000px;
+            overflow: hidden;
+        }
+        .post-content.hidden {
+            max-height: 0;
         }
         .read-more {
             color: #8B008B;
@@ -126,25 +136,66 @@
 <div class="right">
     <h1>Posts</h1>
 
-       <div class="post-preview">
-        <h2 class="post-title">Reflections on Homebrew</h2>
-        <p>Three months in a New York City commune and a Christmas miracle.</p>
-        <a class="read-more" href="https://robertsreflections.substack.com/p/reflections-on-homebrew" target="_blank">Read More</a>
+    <div class="post-preview">
+        <h2 class="post-title collapsed">Whale Watching</h2>
+        <div class="post-content hidden">
+            <p>Spending some time in credit derivatives got me interested in when things go wrong and one of the more intriguing cases is 2012's London Whale. The main characters are Bruno Iksil and JP Morgan, the loss led to numerous court cases. At one stage, Iksil ran a blog called the Marionette which
+                told his side of the story which has since been largely ignored by the media. Some month's prior to the blog going offline, I downloaded its contents.
+                I am making them available here for posterity.
+
+                <p><a href="docs/derivatives/What is the London Whale.pdf" target="_blank">'What is the London Whale'</a> A description of the loss.</p>
+                <p><a href="docs/derivatives/Iksil - facts, realities and dates.pdf" target="_blank">'Facts, Realities and Dates'</a> A timeline. </p>
+                <p><a href="docs/derivatives/Preamble.pdf" target="_blank">'Preamble'</a> A rationale.</p>
+                <p><a href="docs/derivatives/Official version vs Iksil story.pdf" target="_blank">'Official version vs Iksil's Story'</a> Where paths diverge.</p>
+                <p><a href="docs/derivatives/Reliability.pdf" target="_blank">'Reliability'</a> More intrigue.</p>
+                <p><a href="docs/derivatives/Morphing Tales.pdf" target="_blank">'Morphing Tales'</a> Down the rabbit hole.</p>
+                <p><a href="docs/derivatives/Possible gains from the event.pdf" target="_blank">'Possible Gains'</a> Possible gains from the event.</p>
+                <p><a href="docs/derivatives/Memo on 2012 gains.pdf" target="_blank">'Memo on 2012 Gains'</a> More evidence for potential gains.</p>
+                <p><a href="docs/derivatives/Iksil Press Communication.pdf" target="_blank">'Press Communications'</a> Iksil's communications with the press.</p>
+                <p><a href="docs/derivatives/VaR history.pdf" target="_blank">'A History of VaR'</a> A history of VaR that appeared in the French press at the time.</p>
+
+            </p>
+        </div>
     </div>
 
     <div class="post-preview">
-        <h2 class="post-title">The Inishkea Islands Atlanticist</h2>
-        <p>An Irish cult and the Financial Times comment section.</p>
-        <a class="read-more" href="https://robertsreflections.substack.com/p/the-inishkea-islands-atlanticist" target="_blank">Read More</a>
+        <h2 class="post-title collapsed">Reflections on Homebrew</h2>
+        <div class="post-content hidden">
+            <p>Three months in a New York City commune and a Christmas miracle.</p>
+            <a class="read-more" href="https://robertsreflections.substack.com/p/reflections-on-homebrew" target="_blank">Read More</a>
+        </div>
     </div>
 
     <div class="post-preview">
-        <h2 class="post-title">A Simple and Elegant Response to Ireland's Housing Crisis</h2>
-        <p>An essay that appeared in <a href="https://www.thefitzwilliam.com/" target="_blank">The Fitzwilliam</a>, an Irish journal of ideas, on what became <a href="https://betterplanning.ie/street-plans/" target="_blank">Street Plans</a>. The original idea was heavily influenced by England's <a href="https://yimbyalliance.org/street-votes/" target="_blank">Street Votes proposal</a>.</p>
-        <a class="read-more" href="https://www.thefitzwilliam.com/p/a-simple-and-elegant-response-to" target="_blank">Read More</a>
+        <h2 class="post-title collapsed">The Inishkea Islands Atlanticist</h2>
+        <div class="post-content hidden">
+            <p>An Irish cult and the Financial Times comment section.</p>
+            <a class="read-more" href="https://robertsreflections.substack.com/p/the-inishkea-islands-atlanticist" target="_blank">Read More</a>
+        </div>
+    </div>
+
+    <div class="post-preview">
+        <h2 class="post-title collapsed">A Simple and Elegant Response to Ireland's Housing Crisis</h2>
+        <div class="post-content hidden">
+            <p>An essay that appeared in <a href="https://www.thefitzwilliam.com/" target="_blank">The Fitzwilliam</a>, an Irish journal of ideas, on what became <a href="https://betterplanning.ie/street-plans/" target="_blank">Street Plans</a>. The original idea was heavily influenced by England's <a href="https://yimbyalliance.org/street-votes/" target="_blank">Street Votes proposal</a>.</p>
+            <a class="read-more" href="https://www.thefitzwilliam.com/p/a-simple-and-elegant-response-to" target="_blank">Read More</a>
+        </div>
     </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const postTitles = document.querySelectorAll('.post-title');
+
+    postTitles.forEach(title => {
+        title.addEventListener('click', function() {
+            this.classList.toggle('collapsed');
+            const content = this.nextElementSibling;
+            content.classList.toggle('hidden');
+        });
+    });
+});
+</script>
 </body>
 </html>
