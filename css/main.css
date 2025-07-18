@@ -18,8 +18,7 @@ body {
         width: 75%;
     }
 
-    h1#desktoptop {
-    }
+
 
     .desktopleft {
         float: left;
@@ -42,7 +41,6 @@ body {
 
     .right {
         float: right;
-        display: inline-block;
 
         font-size: 13pt;
 
@@ -171,7 +169,6 @@ body {
 
     .right {
         float: left;
-        display: inline-block;
 
         font-size: 12pt;
 
