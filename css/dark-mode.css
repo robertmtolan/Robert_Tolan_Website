@@ -84,4 +84,23 @@
 /* Ensure images don't transition */
 img {
     transition: none;
+}
+
+/* Force dark mode text colors with high specificity */
+[data-theme="dark"] .post-title,
+[data-theme="dark"] .post-meta,
+[data-theme="dark"] .post-content,
+[data-theme="dark"] .post-content p,
+[data-theme="dark"] .post-content h1,
+[data-theme="dark"] .post-content h2,
+[data-theme="dark"] .post-content h3 {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .post-header {
+    border-bottom-color: #404040 !important;
+}
+
+[data-theme="dark"] .post-footer {
+    border-top-color: #404040 !important;
 } 

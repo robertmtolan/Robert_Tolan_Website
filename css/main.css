@@ -77,7 +77,7 @@ body {
     }
     ul#desktopnav li a.active {
         font-weight: bold;
-        color: black;
+        color: var(--text-primary);
     }
 
     ul#desktopessayssubnav {
@@ -91,7 +91,7 @@ body {
     }
     ul#desktopessayssubnav li a.active {
         font-weight: bold;
-        color: black;
+        color: var(--text-primary);
     }
 
     ul#desktopcontact {
@@ -202,7 +202,7 @@ body {
     }
     ul#mobilenav li a.active {
         font-weight: bold;
-        color: black;
+        color: var(--text-primary);
     }
 
     ul#mobileessayssubnav {
@@ -216,7 +216,7 @@ body {
     }
     ul#mobileessayssubnav li a.active {
         font-weight: bold;
-        color: black;
+        color: var(--text-primary);
     }
 
     ul#mobilecontact {
@@ -250,7 +250,7 @@ body {
 }
 
 .naked {
-    color: black;
+    color: var(--text-primary);
     text-decoration: none;
 }
 
