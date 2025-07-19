@@ -131,7 +131,7 @@ function createWelcomeEmailTemplate(name) {
                 }
                 .welcome-title {
                     font-size: 28px;
-                    color: #8B008B;
+                    color: black;
                     margin-bottom: 10px;
                 }
                 .content { 
@@ -145,7 +145,7 @@ function createWelcomeEmailTemplate(name) {
                     padding-top: 20px; 
                 }
                 .highlight {
-                    background: linear-gradient(120deg, #8B008B, #9370DB);
+                    background: linear-gradient(120deg, black, #333333);
                     color: white;
                     padding: 15px 20px;
                     border-radius: 6px;
@@ -153,7 +153,7 @@ function createWelcomeEmailTemplate(name) {
                 }
                 .cta-button {
                     display: inline-block;
-                    background: #8B008B;
+                    background: black;
                     color: white;
                     padding: 12px 24px;
                     text-decoration: none;
@@ -165,7 +165,7 @@ function createWelcomeEmailTemplate(name) {
                     margin: 20px 0;
                 }
                 .social-links a {
-                    color: #8B008B;
+                    color: black;
                     text-decoration: none;
                     margin: 0 10px;
                 }
@@ -200,7 +200,7 @@ function createWelcomeEmailTemplate(name) {
                 
                 <div class="footer">
                     <p>You're receiving this because you subscribed to my newsletter.</p>
-                    <p>If you didn't sign up, you can <a href="{{UNSUBSCRIBE_URL}}" style="color: #8B008B;">unsubscribe here</a>.</p>
+                    <p>If you didn't sign up, you can <a href="{{UNSUBSCRIBE_URL}}" style="color: black;">unsubscribe here</a>.</p>
                     <div class="social-links">
                         <a href="https://x.com/Rob_Tolan">Twitter</a> |
                         <a href="mailto:robertmtolan1@gmail.com">Email</a>

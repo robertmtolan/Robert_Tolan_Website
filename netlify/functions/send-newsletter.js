@@ -191,18 +191,18 @@ function createEmailTemplate(post) {
                 .header { text-align: center; margin-bottom: 30px; }
                 .content { margin-bottom: 30px; }
                 .footer { text-align: center; font-size: 12px; color: #666; border-top: 1px solid #eee; padding-top: 20px; }
-                .post-title { font-size: 24px; color: #8B008B; margin-bottom: 15px; }
+                .post-title { font-size: 24px; color: black; margin-bottom: 15px; }
                 .post-meta { font-size: 14px; color: #666; margin-bottom: 20px; }
-                .read-more { display: inline-block; background: #8B008B; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+                .read-more { display: inline-block; background: black; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
                 .unsubscribe { font-size: 11px; color: #999; }
-                .highlight { background: linear-gradient(120deg, #8B008B, #9370DB); color: white; padding: 15px 20px; border-radius: 6px; margin: 20px 0; }
+                .highlight { background: linear-gradient(120deg, black, #333333); color: white; padding: 15px 20px; border-radius: 6px; margin: 20px 0; }
             </style>
         </head>
         <body>
             ${trackingPixel}
             <div class="container">
                 <div class="header">
-                    <h1 style="color: #8B008B; margin: 0;">Robert Tolan</h1>
+                    <h1 style="color: black; margin: 0;">Robert Tolan</h1>
                     <p style="margin: 5px 0; color: #666;">Latest thoughts and insights</p>
                 </div>
                 

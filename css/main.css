@@ -1,5 +1,7 @@
 body {
   font-family: "Computer Modern Sans", sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 @media screen and (min-width: 801px) {
@@ -71,7 +73,7 @@ body {
     }
     ul#desktopnav li a {
         text-decoration: none;
-        color: #8B008B
+        color: var(--accent-color)
     }
     ul#desktopnav li a.active {
         font-weight: bold;
@@ -85,7 +87,7 @@ body {
     }
     ul#desktopessayssubnav li a {
         text-decoration: none;
-        color: #8B008B;
+        color: var(--accent-color);
     }
     ul#desktopessayssubnav li a.active {
         font-weight: bold;
@@ -196,7 +198,7 @@ body {
 
     ul#mobilenav li a {
         text-decoration: none;
-        color: #8B008B;
+        color: var(--accent-color);
     }
     ul#mobilenav li a.active {
         font-weight: bold;
@@ -210,7 +212,7 @@ body {
     }
     ul#mobileessayssubnav li a {
         text-decoration: none;
-        color: #8B008B;
+        color: var(--accent-color);
     }
     ul#mobileessayssubnav li a.active {
         font-weight: bold;
@@ -266,8 +268,8 @@ body {
 }
 
 .post-category {
-    background: #8B008B;
-    color: white;
+    background: var(--accent-color);
+    color: var(--bg-primary);
     padding: 2px 8px;
     border-radius: 12px;
     font-size: 10px;
@@ -279,14 +281,14 @@ body {
 }
 
 .post-body h3 {
-    color: #8B008B;
+    color: var(--accent-color);
     margin-top: 25px;
     margin-bottom: 15px;
     font-size: 18px;
 }
 
 .post-body h4 {
-    color: #6a006a;
+    color: var(--accent-color);
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 16px;
@@ -297,7 +299,7 @@ body {
 }
 
 .post-body a {
-    color: #8B008B;
+    color: var(--accent-color);
     text-decoration: none;
 }
 
@@ -310,6 +312,6 @@ body {
 /* Force active navigation to be black */
 body ul#desktopnav li a.active,
 body ul#mobilenav li a.active {
-    color: black !important;
+    color: var(--text-primary) !important;
     font-weight: bold !important;
 }

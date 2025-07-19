@@ -8,12 +8,13 @@
     <title>Robert Tolan</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/dark-mode.css">
     <link rel="icon" type="image/x-icon" href="/img/favicon2.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
  @media (max-width: 768px) {
     body, html {
-        background: #ffffff;
+        background: var(--bg-primary);
         position: relative;
         min-height: 100%;
         width: 100%;
@@ -36,12 +37,12 @@
         z-index: 1;
         margin: 20px 0;
         padding: 0;
-        background: #ffffff;
+        background: var(--bg-primary);
     }
     #mobilenav {
         position: relative;
         z-index: 1;
-        background: #ffffff;
+        background: var(--bg-primary);
         width: 100%;
         margin: 0;
         padding: 0;
@@ -50,13 +51,13 @@
     .right {
         position: relative;
         z-index: 1;
-        background: #ffffff;
+        background: var(--bg-primary);
         width: 100%;
         margin-top: 20px;
         clear: both;
     }
     * {
-        background: #ffffff;
+        background: var(--bg-primary);
     }
 }
     </style>
@@ -70,8 +71,11 @@
       gtag('config', 'G-XGRVMPLY74');
     </script>
     <script src="js/analytics.js"></script>
+    <script src="js/dark-mode.js"></script>
 </head>
 <body>
+
+<button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
 
 <div class="desktopleft">
     <img src="img/robert.jpg" id="desktopphoto" width="100%" align="top" alt="Robert Tolan">

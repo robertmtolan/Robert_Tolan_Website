@@ -1,0 +1,87 @@
+/* Dark Mode CSS Variables and Toggle System */
+
+:root {
+    /* Light Mode Colors (Default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --text-muted: #666666;
+    --border-color: #e5e7eb;
+    --accent-color: #000000;
+    --accent-hover: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --shadow-hover: rgba(0, 0, 0, 0.12);
+    --input-border: #d1d5db;
+    --input-focus: #000000;
+    --input-focus-shadow: rgba(0, 0, 0, 0.1);
+    --success-bg: #f0fdf4;
+    --success-border: #bbf7d0;
+    --success-text: #166534;
+    --error-bg: #fef2f2;
+    --error-border: #fecaca;
+    --error-text: #dc2626;
+}
+
+[data-theme="dark"] {
+    /* Dark Mode Colors */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #e5e5e5;
+    --text-muted: #a0a0a0;
+    --border-color: #404040;
+    --accent-color: #ffffff;
+    --accent-hover: #cccccc;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-hover: rgba(0, 0, 0, 0.4);
+    --input-border: #404040;
+    --input-focus: #ffffff;
+    --input-focus-shadow: rgba(255, 255, 255, 0.1);
+    --success-bg: #1a3a1a;
+    --success-border: #2d5a2d;
+    --success-text: #4ade80;
+    --error-bg: #3a1a1a;
+    --error-border: #5a2d2d;
+    --error-text: #f87171;
+}
+
+/* Dark Mode Toggle Button */
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.theme-toggle:hover {
+    background-color: var(--shadow-color);
+}
+
+.theme-toggle:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Smooth transitions for theme switching */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ensure images don't transition */
+img {
+    transition: none;
+} 
