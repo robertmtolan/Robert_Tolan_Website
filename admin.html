@@ -166,24 +166,7 @@
             border: 1px solid #f44336;
         }
         
-        .analytics-link {
-            background: #0066cc;
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-        }
-        
-        .analytics-link:hover {
-            background: #0077ee;
-            color: #fff;
-            text-decoration: none;
-        }
+
         
         .form-group {
             margin-bottom: 25px;
@@ -1113,6 +1096,454 @@
             color: #333;
         }
         
+        /* PDF Upload Styles */
+        .pdf-upload-section {
+            margin-top: 10px;
+        }
+        
+        .pdf-folder-controls {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 6px;
+        }
+        
+        body.light-mode .pdf-folder-controls {
+            background: #f8f9fa;
+            border-color: #ddd;
+        }
+        
+        .pdf-folder-controls label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ccc;
+        }
+        
+        body.light-mode .pdf-folder-controls label {
+            color: #666;
+        }
+        
+        .folder-input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .folder-input-group input {
+            flex: 1;
+            margin: 0;
+        }
+        
+        .button.small {
+            padding: 6px 12px;
+            font-size: 12px;
+            min-width: auto;
+        }
+        
+        .upload-hint {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+        }
+        
+        body.light-mode .upload-hint {
+            color: #666;
+        }
+        
+        .pdf-upload-area {
+            border: 2px dashed #555;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #2a2a2a;
+            margin-bottom: 15px;
+        }
+        
+        body.light-mode .pdf-upload-area {
+            border-color: #ddd;
+            background: #f8f9fa;
+        }
+        
+        .pdf-upload-area:hover {
+            border-color: #0066cc;
+            background: #333;
+        }
+        
+        body.light-mode .pdf-upload-area:hover {
+            border-color: #0066cc;
+            background: #e9ecef;
+        }
+        
+        .pdf-upload-area.dragover {
+            border-color: #0066cc;
+            background: #1a3a1a;
+            transform: scale(1.02);
+        }
+        
+        body.light-mode .pdf-upload-area.dragover {
+            background: #e8f5e8;
+        }
+        
+        .pdf-list {
+            margin-bottom: 15px;
+        }
+        
+        .pdf-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background: #333;
+            border: 1px solid #444;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        
+        body.light-mode .pdf-item {
+            background: #fff;
+            border-color: #ddd;
+        }
+        
+        .pdf-item-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+        
+        .pdf-item-icon {
+            color: #ff6b6b;
+            font-size: 18px;
+        }
+        
+        .pdf-item-details {
+            flex: 1;
+        }
+        
+        .pdf-item-name {
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 2px;
+        }
+        
+        body.light-mode .pdf-item-name {
+            color: #333;
+        }
+        
+        .pdf-item-size {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .pdf-item-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .pdf-action-btn {
+            background: #444;
+            border: none;
+            color: #ccc;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+        
+        .pdf-action-btn:hover {
+            background: #555;
+            color: #fff;
+        }
+        
+        .pdf-action-btn.insert {
+            background: #0066cc;
+            color: #fff;
+        }
+        
+        .pdf-action-btn.insert:hover {
+            background: #0077ee;
+        }
+        
+        .pdf-action-btn.delete {
+            background: #dc3545;
+            color: #fff;
+        }
+        
+        .pdf-action-btn.delete:hover {
+            background: #c82333;
+        }
+        
+        /* PDF Modal Styles */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .pdf-modal-content {
+            background: #2a2a2a;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid #444;
+        }
+        
+        body.light-mode .pdf-modal-content {
+            background: #fff;
+            border-color: #ddd;
+        }
+        
+        .pdf-management-list {
+            margin: 20px 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .pdf-management-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: #333;
+            border: 1px solid #444;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+        
+        body.light-mode .pdf-management-item {
+            background: #f8f9fa;
+            border-color: #ddd;
+        }
+        
+        .pdf-management-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+        }
+        
+        .pdf-management-details h4 {
+            margin: 0 0 4px 0;
+            color: #e0e0e0;
+        }
+        
+        body.light-mode .pdf-management-details h4 {
+            color: #333;
+        }
+        
+        .pdf-management-details p {
+            margin: 0;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Scheduled Posts Styles */
+        .scheduled-posts-section {
+            margin-top: 10px;
+        }
+
+        .scheduled-posts-list {
+            margin-top: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .scheduled-post-item {
+            background: #333;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        body.light-mode .scheduled-post-item {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+        }
+
+        .scheduled-post-info {
+            flex: 1;
+        }
+
+        .scheduled-post-title {
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 5px;
+        }
+
+        body.light-mode .scheduled-post-title {
+            color: #333;
+        }
+
+        .scheduled-post-time {
+            font-size: 12px;
+            color: #999;
+        }
+
+        body.light-mode .scheduled-post-time {
+            color: #666;
+        }
+
+        .scheduled-post-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .scheduled-post-actions button {
+            padding: 4px 8px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
+        .no-scheduled-posts {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        body.light-mode .no-scheduled-posts {
+            color: #666;
+        }
+        
+        /* Date Calendar Styles */
+        .date-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .datetime-inputs {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .datetime-inputs input[type="date"] {
+            flex: 2;
+        }
+        
+        .datetime-inputs input[type="time"] {
+            flex: 1;
+        }
+        
+        .date-presets {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .date-presets .button {
+            background: #444;
+            border: 1px solid #555;
+            color: #ccc;
+            transition: all 0.2s ease;
+        }
+        
+        .date-presets .button:hover {
+            background: #555;
+            color: #fff;
+            border-color: #666;
+        }
+        
+        body.light-mode .date-presets .button {
+            background: #e9ecef;
+            border-color: #ddd;
+            color: #666;
+        }
+        
+        body.light-mode         .date-presets .button:hover {
+            background: #dee2e6;
+            color: #333;
+        }
+        
+        .time-presets {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .time-presets .button {
+            background: #444;
+            border: 1px solid #555;
+            color: #ccc;
+            transition: all 0.2s ease;
+        }
+        
+        .time-presets .button:hover {
+            background: #555;
+            color: #fff;
+            border-color: #666;
+        }
+        
+        body.light-mode .time-presets .button {
+            background: #e9ecef;
+            border-color: #ddd;
+            color: #666;
+        }
+        
+        body.light-mode .time-presets .button:hover {
+            background: #dee2e6;
+            color: #333;
+        }
+        
+        .publication-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 4px;
+        }
+        
+        body.light-mode .publication-status {
+            background: #f8f9fa;
+            border-color: #ddd;
+        }
+        
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4caf50;
+        }
+        
+        .status-indicator.scheduled {
+            background: #ff9800;
+        }
+        
+        .status-indicator.past {
+            background: #f44336;
+        }
+        
+        .status-text {
+            font-size: 12px;
+            color: #ccc;
+        }
+        
+        body.light-mode .status-text {
+            color: #666;
+        }
+        
         @media (max-width: 768px) {
             .form-row {
                 grid-template-columns: 1fr;
@@ -1162,6 +1593,46 @@
             .toolbar-btn i {
                 font-size: 12px;
             }
+            
+            .pdf-modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 20px;
+            }
+            
+            .folder-input-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .date-presets {
+                gap: 6px;
+            }
+            
+            .date-presets .button {
+                font-size: 11px;
+                padding: 4px 8px;
+            }
+            
+            .datetime-inputs {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .datetime-inputs input[type="date"],
+            .datetime-inputs input[type="time"] {
+                flex: none;
+                width: 100%;
+            }
+            
+            .time-presets {
+                gap: 6px;
+            }
+            
+            .time-presets .button {
+                font-size: 11px;
+                padding: 4px 8px;
+            }
         }
     </style>
 </head>
@@ -1173,9 +1644,6 @@
                 <div class="save-status idle" id="saveStatus">
                     <i class="fas fa-circle"></i> All changes saved
                 </div>
-                <a href="analytics.html" class="analytics-link" title="View Analytics">
-                    <i class="fas fa-chart-line"></i> Analytics
-                </a>
                 <button class="preview-toggle" id="previewToggle">
                     <i class="fas fa-eye"></i> Preview
                 </button>
@@ -1316,8 +1784,29 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="postDate">Publication Date</label>
-                    <input type="date" id="postDate">
+                    <label for="postDate">Publication Date & Time</label>
+                    <div class="date-controls">
+                        <div class="datetime-inputs">
+                            <input type="date" id="postDate">
+                            <input type="time" id="postTime" value="09:00">
+                        </div>
+                        <div class="date-presets">
+                            <button type="button" class="button small" onclick="setDate('today')">Today</button>
+                            <button type="button" class="button small" onclick="setDate('tomorrow')">Tomorrow</button>
+                            <button type="button" class="button small" onclick="setDate('next-week')">Next Week</button>
+                            <button type="button" class="button small" onclick="setDate('next-month')">Next Month</button>
+                        </div>
+                        <div class="time-presets">
+                            <button type="button" class="button small" onclick="setTime('morning')">Morning (9 AM)</button>
+                            <button type="button" class="button small" onclick="setTime('noon')">Noon (12 PM)</button>
+                            <button type="button" class="button small" onclick="setTime('evening')">Evening (6 PM)</button>
+                            <button type="button" class="button small" onclick="setTime('night')">Night (9 PM)</button>
+                        </div>
+                    </div>
+                    <div class="publication-status" id="publicationStatus">
+                        <span class="status-indicator" id="statusIndicator"></span>
+                        <span class="status-text" id="statusText">Ready to publish</span>
+                    </div>
                 </div>
             </div>
             
@@ -1399,6 +1888,47 @@
                             <li>Add a meta description to improve search results</li>
                             <li>Include focus keywords in your content</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PDF Upload Section -->
+            <div class="form-group">
+                <label>PDF Documents</label>
+                <div class="pdf-upload-section">
+                    <div class="pdf-folder-controls">
+                        <label for="pdfFolder">PDF Folder:</label>
+                        <div class="folder-input-group">
+                            <input type="text" id="pdfFolder" placeholder="Enter folder name (e.g., derivatives, housing, research)" value="misc">
+                            <button type="button" class="button small" id="createFolderBtn">
+                                <i class="fas fa-folder-plus"></i> Create
+                            </button>
+                        </div>
+                    </div>
+                    <div class="pdf-upload-area" id="pdfUploadArea">
+                        <p><i class="fas fa-file-pdf" style="font-size: 24px; margin-bottom: 10px;"></i></p>
+                        <p>Click to upload PDF or drag files here</p>
+                        <p class="upload-hint">Files will be saved to: <strong>docs/<span id="currentFolder">misc</span>/</strong></p>
+                        <input type="file" id="pdfInput" accept=".pdf" multiple style="display: none;">
+                    </div>
+                    <div class="pdf-list" id="pdfList">
+                        <!-- Uploaded PDFs will appear here -->
+                    </div>
+                    <button type="button" class="button" id="managePdfBtn">
+                        <i class="fas fa-cog"></i> Manage PDFs
+                    </button>
+                </div>
+            </div>
+
+            <!-- Scheduled Posts Section -->
+            <div class="form-group">
+                <label>Scheduled Posts</label>
+                <div class="scheduled-posts-section">
+                    <button type="button" class="button secondary" onclick="loadScheduledPosts()">
+                        <i class="fas fa-refresh"></i> Refresh Scheduled Posts
+                    </button>
+                    <div id="scheduledPostsList" class="scheduled-posts-list">
+                        <p class="text-muted">Click "Refresh" to load scheduled posts</p>
                     </div>
                 </div>
             </div>
@@ -1519,6 +2049,26 @@
         </div>
     </div>
 
+    <!-- PDF Management Modal -->
+    <div class="pdf-modal" id="pdfModal">
+        <div class="pdf-modal-content">
+            <h3><i class="fas fa-file-pdf"></i> Manage PDF Documents</h3>
+            <div class="pdf-upload-area" id="modalPdfUpload">
+                <p><i class="fas fa-cloud-upload-alt" style="font-size: 24px; margin-bottom: 10px;"></i></p>
+                <p>Click to upload or drag PDF files here</p>
+                <input type="file" id="modalPdfInput" accept=".pdf" multiple style="display: none;">
+            </div>
+            <div class="pdf-management-list" id="pdfManagementList">
+                <!-- PDFs will be listed here -->
+            </div>
+            <div class="modal-buttons">
+                <button type="button" class="button" onclick="closePdfModal()">
+                    <i class="fas fa-times"></i> Close
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="js/post-manager.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/public-config.js"></script>
@@ -1550,7 +2100,7 @@
             autoSaveInterval = setInterval(autoSaveDraft, 30000); // Save every 30 seconds
             
             // Save on form changes
-            const formElements = ['postTitle', 'postContent', 'postCategory', 'postDate'];
+            const formElements = ['postTitle', 'postContent', 'postCategory', 'postDate', 'postTime'];
             formElements.forEach(id => {
                 const element = document.getElementById(id);
                 if (element) {
@@ -1583,6 +2133,7 @@
                 content: document.getElementById('postContent').value,
                 category: document.getElementById('postCategory').value,
                 date: document.getElementById('postDate').value,
+                time: document.getElementById('postTime').value,
                 tags: tags,
                 metaDescription: document.getElementById('metaDescription').value,
                 urlSlug: document.getElementById('urlSlug').value,
@@ -2707,85 +3258,24 @@
             closeLinkModal();
         });
         
-        // Form submission
-        document.getElementById('postForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const successMessage = document.getElementById('successMessage');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Publishing...';
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
-            
-            const title = document.getElementById('postTitle').value;
-            const content = document.getElementById('postContent').value;
-            const category = document.getElementById('postCategory').value;
-            const date = document.getElementById('postDate').value;
-            const metaDescription = document.getElementById('metaDescription').value;
-            const urlSlug = document.getElementById('urlSlug').value;
-            
-            try {
-                const options = {
-                    category: category,
-                    date: date ? new Date(date) : new Date(),
-                    tags: tags,
-                    metaDescription: metaDescription,
-                    urlSlug: urlSlug,
-                    seoKeywords: seoKeywords
-                };
-                
-                // Generate individual post page
-                await generatePostPage(title, content, options);
-                
-                // Add post to website
-                const post = postManager.quickAdd(title, content, options);
-                
-                // Send newsletter if checkbox is checked
-                const sendNewsletter = document.getElementById('sendNewsletter').checked;
-                if (sendNewsletter) {
-                    try {
-                        const newsletterResult = await supabaseNewsletter.sendNewsletter(post);
-                        successMessage.innerHTML = `
-                            <i class="fas fa-check-circle"></i> Post published successfully! 
-                            Newsletter sent to ${newsletterResult.sent} subscribers.
-                        `;
-                    } catch (newsletterError) {
-                        successMessage.innerHTML = `
-                            <i class="fas fa-check-circle"></i> Post published successfully! 
-                            Newsletter sending failed: ${newsletterError.message}
-                        `;
-                    }
-                } else {
-                    successMessage.innerHTML = `
-                        <i class="fas fa-check-circle"></i> Post published successfully!
-                    `;
-                }
-                
-                // Show success
-                successMessage.style.display = 'block';
-                await clearDraft(); // Clear the draft when post is published
-                clearForm();
-                
-            } catch (error) {
-                console.error('Error:', error);
-                errorMessage.textContent = `❌ Error: ${error.message}`;
-                errorMessage.style.display = 'block';
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Publish Post';
-            }
-        });
+
         
         function clearForm() {
             document.getElementById('postForm').reset();
-            document.getElementById('postDate').value = new Date().toISOString().split('T')[0];
+            const today = new Date();
+            const localDate = new Date(today.getTime() - (today.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+            document.getElementById('postDate').value = localDate;
+            document.getElementById('postTime').value = '09:00';
             tags = [];
             seoKeywords = [];
+            uploadedPdfs = [];
+            currentPdfFolder = 'misc';
+            pdfFolderInput.value = 'misc';
+            updateCurrentFolder();
+            updatePublicationStatus();
             renderTags();
             renderKeywords();
+            renderPdfList();
             updatePreview();
             updateContentStats();
             updateSEOAnalysis();
@@ -2809,6 +3299,623 @@
                 closeFindModal();
             }
         });
+        
+        // PDF Upload and Management
+        let uploadedPdfs = [];
+        let currentPdfFolder = 'misc';
+        
+        // PDF upload area functionality
+        const pdfUploadArea = document.getElementById('pdfUploadArea');
+        const pdfInput = document.getElementById('pdfInput');
+        const pdfList = document.getElementById('pdfList');
+        const managePdfBtn = document.getElementById('managePdfBtn');
+        
+        // Modal elements
+        const pdfModal = document.getElementById('pdfModal');
+        const modalPdfUpload = document.getElementById('modalPdfUpload');
+        const modalPdfInput = document.getElementById('modalPdfInput');
+        const pdfManagementList = document.getElementById('pdfManagementList');
+        
+        // Folder controls
+        const pdfFolderInput = document.getElementById('pdfFolder');
+        const createFolderBtn = document.getElementById('createFolderBtn');
+        const currentFolderSpan = document.getElementById('currentFolder');
+        
+        // Date controls
+        const postDateInput = document.getElementById('postDate');
+        const postTimeInput = document.getElementById('postTime');
+        const statusIndicator = document.getElementById('statusIndicator');
+        const statusText = document.getElementById('statusText');
+        
+        // PDF upload area event listeners
+        pdfUploadArea.addEventListener('click', () => pdfInput.click());
+        pdfUploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            pdfUploadArea.classList.add('dragover');
+        });
+        pdfUploadArea.addEventListener('dragleave', () => {
+            pdfUploadArea.classList.remove('dragover');
+        });
+        pdfUploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            pdfUploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            handlePdfUpload(Array.from(files));
+        });
+        
+        pdfInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            handlePdfUpload(files);
+        });
+        
+        // Modal PDF upload event listeners
+        modalPdfUpload.addEventListener('click', () => modalPdfInput.click());
+        modalPdfUpload.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            modalPdfUpload.classList.add('dragover');
+        });
+        modalPdfUpload.addEventListener('dragleave', () => {
+            modalPdfUpload.classList.remove('dragover');
+        });
+        modalPdfUpload.addEventListener('drop', (e) => {
+            e.preventDefault();
+            modalPdfUpload.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            handlePdfUpload(Array.from(files));
+        });
+        
+        modalPdfInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            handlePdfUpload(files);
+        });
+        
+        // Manage PDFs button
+        managePdfBtn.addEventListener('click', () => {
+            openPdfModal();
+        });
+        
+        // Close PDF modal when clicking outside
+        pdfModal.addEventListener('click', (e) => {
+            if (e.target.id === 'pdfModal') {
+                closePdfModal();
+            }
+        });
+        
+        // Folder control event listeners
+        pdfFolderInput.addEventListener('input', updateCurrentFolder);
+        createFolderBtn.addEventListener('click', createFolder);
+        
+        // Date control event listeners
+        postDateInput.addEventListener('change', updatePublicationStatus);
+        postTimeInput.addEventListener('change', updatePublicationStatus);
+        
+        // Initialize date and folder
+        initializeDateAndFolder();
+        
+        function handlePdfUpload(files) {
+            files.forEach(file => {
+                if (file.type === 'application/pdf') {
+                    const pdfInfo = {
+                        name: file.name,
+                        size: formatFileSize(file.size),
+                        file: file,
+                        id: Date.now() + Math.random()
+                    };
+                    
+                    uploadedPdfs.push(pdfInfo);
+                    renderPdfList();
+                    renderPdfManagementList();
+                }
+            });
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        function renderPdfList() {
+            pdfList.innerHTML = '';
+            if (uploadedPdfs.length === 0) {
+                pdfList.innerHTML = '<p style="text-align: center; color: #999; font-style: italic; padding: 20px;">No PDFs uploaded yet</p>';
+                return;
+            }
+            
+            uploadedPdfs.forEach(pdf => {
+                const pdfItem = document.createElement('div');
+                pdfItem.className = 'pdf-item';
+                pdfItem.innerHTML = `
+                    <div class="pdf-item-info">
+                        <i class="fas fa-file-pdf pdf-item-icon"></i>
+                        <div class="pdf-item-details">
+                            <div class="pdf-item-name">${pdf.name}</div>
+                            <div class="pdf-item-size">${pdf.size} • Will save to: docs/${currentPdfFolder}/</div>
+                        </div>
+                    </div>
+                    <div class="pdf-item-actions">
+                        <button class="pdf-action-btn insert" onclick="insertPdfLink('${pdf.id}')">
+                            <i class="fas fa-plus"></i> Insert
+                        </button>
+                        <button class="pdf-action-btn delete" onclick="removePdf('${pdf.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                pdfList.appendChild(pdfItem);
+            });
+        }
+        
+        function renderPdfManagementList() {
+            pdfManagementList.innerHTML = '';
+            if (uploadedPdfs.length === 0) {
+                pdfManagementList.innerHTML = '<p style="text-align: center; color: #999; font-style: italic; padding: 20px;">No PDFs uploaded yet</p>';
+                return;
+            }
+            
+            uploadedPdfs.forEach(pdf => {
+                const pdfItem = document.createElement('div');
+                pdfItem.className = 'pdf-management-item';
+                pdfItem.innerHTML = `
+                    <div class="pdf-management-info">
+                        <i class="fas fa-file-pdf" style="color: #ff6b6b; font-size: 20px;"></i>
+                        <div class="pdf-management-details">
+                            <h4>${pdf.name}</h4>
+                            <p>${pdf.size} • Will save to: docs/${currentPdfFolder}/</p>
+                        </div>
+                    </div>
+                    <div class="pdf-item-actions">
+                        <button class="pdf-action-btn insert" onclick="insertPdfLink('${pdf.id}')">
+                            <i class="fas fa-plus"></i> Insert
+                        </button>
+                        <button class="pdf-action-btn delete" onclick="removePdf('${pdf.id}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                pdfManagementList.appendChild(pdfItem);
+            });
+        }
+        
+        function insertPdfLink(pdfId) {
+            const pdf = uploadedPdfs.find(p => p.id === pdfId);
+            if (!pdf) return;
+            
+            // Prompt for display name and description
+            const displayName = prompt('Enter display name for the PDF link:', pdf.name.replace('.pdf', ''));
+            if (!displayName) return;
+            
+            const description = prompt('Enter description for the PDF:', '');
+            
+            const textarea = document.getElementById('postContent');
+            const cursorPos = textarea.selectionStart;
+            
+            // Create the PDF link in the same format as whale-watching.html
+            // Note: We use the current folder name, not a hardcoded category
+            const pdfLink = `<p><a href="../docs/${currentPdfFolder}/${pdf.name}" target="_blank">'${displayName}'</a> ${description}.</p>`;
+            
+            // Insert at cursor position with proper line breaks
+            const beforeCursor = textarea.value.substring(0, cursorPos);
+            const afterCursor = textarea.value.substring(cursorPos);
+            
+            // Add line break before if not at start and previous char is not a line break
+            const needsLineBefore = cursorPos > 0 && !beforeCursor.endsWith('\n');
+            const needsLineAfter = afterCursor.length > 0 && !afterCursor.startsWith('\n');
+            
+            let insertText = pdfLink;
+            if (needsLineBefore) insertText = '\n' + insertText;
+            if (needsLineAfter) insertText = insertText + '\n';
+            
+            textarea.value = beforeCursor + insertText + afterCursor;
+            
+            // Set cursor position after the inserted link
+            const newCursorPos = cursorPos + insertText.length;
+            textarea.focus();
+            textarea.setSelectionRange(newCursorPos, newCursorPos);
+            
+            // Update preview if active
+            if (previewPanel.classList.contains('active')) {
+                updatePreview();
+            }
+            
+            // Update content stats
+            updateContentStats();
+            
+            closePdfModal();
+        }
+        
+
+        
+        function updateCurrentFolder() {
+            const folderName = pdfFolderInput.value.trim().toLowerCase().replace(/[^a-z0-9-_]/g, '-');
+            currentPdfFolder = folderName || 'misc';
+            currentFolderSpan.textContent = currentPdfFolder;
+        }
+        
+        function createFolder() {
+            const folderName = pdfFolderInput.value.trim();
+            if (!folderName) {
+                alert('Please enter a folder name');
+                return;
+            }
+            
+            // Sanitize folder name
+            const sanitizedFolder = folderName.toLowerCase().replace(/[^a-z0-9-_]/g, '-');
+            currentPdfFolder = sanitizedFolder;
+            pdfFolderInput.value = sanitizedFolder;
+            currentFolderSpan.textContent = sanitizedFolder;
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.innerHTML = `<i class="fas fa-check-circle"></i> Folder "${sanitizedFolder}" created successfully!`;
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+        
+        function initializeDateAndFolder() {
+            // Set default date to today in local timezone
+            const today = new Date();
+            const localDate = new Date(today.getTime() - (today.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+            postDateInput.value = localDate;
+            postTimeInput.value = '09:00';
+            updatePublicationStatus();
+            
+            // Initialize folder
+            updateCurrentFolder();
+        }
+        
+        function setDate(preset) {
+            const today = new Date();
+            let targetDate = new Date();
+            
+            switch(preset) {
+                case 'today':
+                    targetDate = today;
+                    break;
+                case 'tomorrow':
+                    targetDate.setDate(today.getDate() + 1);
+                    break;
+                case 'next-week':
+                    targetDate.setDate(today.getDate() + 7);
+                    break;
+                case 'next-month':
+                    targetDate.setMonth(today.getMonth() + 1);
+                    break;
+            }
+            
+            // Convert to local timezone
+            const localDate = new Date(targetDate.getTime() - (targetDate.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+            postDateInput.value = localDate;
+            updatePublicationStatus();
+        }
+        
+        function setTime(preset) {
+            switch(preset) {
+                case 'morning':
+                    postTimeInput.value = '09:00';
+                    break;
+                case 'noon':
+                    postTimeInput.value = '12:00';
+                    break;
+                case 'evening':
+                    postTimeInput.value = '18:00';
+                    break;
+                case 'night':
+                    postTimeInput.value = '21:00';
+                    break;
+            }
+            updatePublicationStatus();
+        }
+        
+        function updatePublicationStatus() {
+            const selectedDate = new Date(postDateInput.value);
+            const selectedTime = postTimeInput.value;
+            
+            if (!selectedDate || !selectedTime) {
+                statusIndicator.className = 'status-indicator past';
+                statusText.textContent = 'Please select date and time';
+                return;
+            }
+            
+            // Create full datetime
+            const [hours, minutes] = selectedTime.split(':');
+            selectedDate.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+            
+            const now = new Date();
+            
+            if (selectedDate < now) {
+                statusIndicator.className = 'status-indicator past';
+                statusText.textContent = 'Date/time is in the past';
+            } else if (selectedDate.getTime() - now.getTime() < 60000) { // Within 1 minute
+                statusIndicator.className = 'status-indicator';
+                statusText.textContent = 'Ready to publish now';
+            } else {
+                statusIndicator.className = 'status-indicator scheduled';
+                const timeDiff = selectedDate.getTime() - now.getTime();
+                const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hoursDiff = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                
+                if (daysDiff > 0) {
+                    statusText.textContent = `Scheduled for ${daysDiff} day${daysDiff !== 1 ? 's' : ''} and ${hoursDiff} hour${hoursDiff !== 1 ? 's' : ''} from now`;
+                } else if (hoursDiff > 0) {
+                    statusText.textContent = `Scheduled for ${hoursDiff} hour${hoursDiff !== 1 ? 's' : ''} from now`;
+                } else {
+                    const minutesDiff = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                    statusText.textContent = `Scheduled for ${minutesDiff} minute${minutesDiff !== 1 ? 's' : ''} from now`;
+                }
+            }
+        }
+        
+        function removePdf(pdfId) {
+            uploadedPdfs = uploadedPdfs.filter(p => p.id !== pdfId);
+            renderPdfList();
+            renderPdfManagementList();
+        }
+        
+        function openPdfModal() {
+            pdfModal.style.display = 'block';
+        }
+        
+        function closePdfModal() {
+            pdfModal.style.display = 'none';
+        }
+        
+        // Store original form submission handler
+        const originalFormSubmit = document.getElementById('postForm').onsubmit;
+        
+        // Override form submission to handle scheduling and PDF uploads
+        document.getElementById('postForm').onsubmit = null;
+        document.getElementById('postForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            try {
+                // Upload PDFs first if any
+                if (uploadedPdfs.length > 0) {
+                    try {
+                        await uploadPdfs();
+                    } catch (error) {
+                        console.error('PDF upload failed:', error);
+                        errorMessage.textContent = `❌ PDF upload failed: ${error.message}`;
+                        errorMessage.style.display = 'block';
+                        return;
+                    }
+                }
+                
+                // Get form data
+                const title = document.getElementById('postTitle').value;
+                const content = document.getElementById('postContent').value;
+                const category = document.getElementById('postCategory').value;
+                const date = document.getElementById('postDate').value;
+                const time = document.getElementById('postTime').value;
+                const metaDescription = document.getElementById('metaDescription').value;
+                const urlSlug = document.getElementById('urlSlug').value;
+                const sendNewsletter = document.getElementById('sendNewsletter').checked;
+                
+                // Create scheduled datetime
+                const scheduledFor = date && time ? new Date(`${date}T${time}`) : new Date();
+                const now = new Date();
+                
+                const options = {
+                    category: category,
+                    tags: tags,
+                    metaDescription: metaDescription,
+                    urlSlug: urlSlug,
+                    seoKeywords: seoKeywords,
+                    sendNewsletter: sendNewsletter
+                };
+                
+                // Check if this should be published immediately or scheduled
+                if (scheduledFor <= now || scheduledFor.getTime() - now.getTime() < 60000) { // Within 1 minute
+                    // Publish immediately
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Publishing...';
+                    
+                    // Generate individual post page
+                    await generatePostPage(title, content, options);
+                    
+                    // Add post to website
+                    const post = postManager.quickAdd(title, content, options);
+                    
+                    // Send newsletter if checkbox is checked
+                    if (sendNewsletter) {
+                        try {
+                            const newsletterResult = await supabaseNewsletter.sendNewsletter(post);
+                            successMessage.innerHTML = `
+                                <i class="fas fa-check-circle"></i> Post published successfully! 
+                                Newsletter sent to ${newsletterResult.sent} subscribers.
+                            `;
+                        } catch (newsletterError) {
+                            successMessage.innerHTML = `
+                                <i class="fas fa-check-circle"></i> Post published successfully! 
+                                Newsletter sending failed: ${newsletterError.message}
+                            `;
+                        }
+                    } else {
+                        successMessage.innerHTML = `
+                            <i class="fas fa-check-circle"></i> Post published successfully!
+                        `;
+                    }
+                } else {
+                    // Schedule for later
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Scheduling...';
+                    
+                    // Schedule the post
+                    const response = await fetch('/.netlify/functions/schedule-post', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            title: title,
+                            content: content,
+                            options: options,
+                            scheduledFor: scheduledFor.toISOString()
+                        })
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        const scheduledTime = new Date(scheduledFor);
+                        const timeString = scheduledTime.toLocaleString();
+                        
+                        successMessage.innerHTML = `
+                            <i class="fas fa-clock"></i> Post scheduled successfully! 
+                            Will be published on ${timeString}
+                        `;
+                    } else {
+                        throw new Error(result.error || 'Failed to schedule post');
+                    }
+                }
+                
+                // Show success
+                successMessage.style.display = 'block';
+                await clearDraft(); // Clear the draft when post is published/scheduled
+                clearForm();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = `❌ Error: ${error.message}`;
+                errorMessage.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Publish Post';
+            }
+        });
+        
+        async function uploadPdfs() {
+            for (const pdf of uploadedPdfs) {
+                const formData = new FormData();
+                formData.append('file', pdf.file);
+                formData.append('category', currentPdfFolder);
+                formData.append('filename', pdf.name);
+                
+                try {
+                    const response = await fetch('/.netlify/functions/upload-pdf', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`Failed to upload ${pdf.name}`);
+                    }
+                    
+                    console.log(`Successfully uploaded ${pdf.name}`);
+                } catch (error) {
+                    console.error(`Error uploading ${pdf.name}:`, error);
+                    throw error;
+                }
+            }
+        }
+
+        // Scheduled Posts Functions
+        async function loadScheduledPosts() {
+            const scheduledPostsList = document.getElementById('scheduledPostsList');
+            scheduledPostsList.innerHTML = '<p>Loading scheduled posts...</p>';
+            
+            try {
+                const response = await fetch('/.netlify/functions/get-scheduled-posts');
+                const result = await response.json();
+                
+                if (result.scheduledPosts && result.scheduledPosts.length > 0) {
+                    renderScheduledPosts(result.scheduledPosts);
+                } else {
+                    scheduledPostsList.innerHTML = '<p class="no-scheduled-posts">No scheduled posts found</p>';
+                }
+            } catch (error) {
+                console.error('Error loading scheduled posts:', error);
+                scheduledPostsList.innerHTML = '<p class="error">Error loading scheduled posts</p>';
+            }
+        }
+
+        function renderScheduledPosts(posts) {
+            const scheduledPostsList = document.getElementById('scheduledPostsList');
+            
+            const postsHtml = posts.map(post => {
+                const scheduledTime = new Date(post.scheduledFor);
+                const timeString = scheduledTime.toLocaleString();
+                const timeUntil = getTimeUntil(scheduledTime);
+                
+                return `
+                    <div class="scheduled-post-item">
+                        <div class="scheduled-post-info">
+                            <div class="scheduled-post-title">${post.title}</div>
+                            <div class="scheduled-post-time">
+                                Scheduled for: ${timeString} (${timeUntil})
+                            </div>
+                        </div>
+                        <div class="scheduled-post-actions">
+                            <button type="button" class="button small danger" onclick="deleteScheduledPost('${post.id}')">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            scheduledPostsList.innerHTML = postsHtml;
+        }
+
+        function getTimeUntil(scheduledTime) {
+            const now = new Date();
+            const diff = scheduledTime.getTime() - now.getTime();
+            
+            if (diff <= 0) {
+                return 'Due now';
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            
+            if (days > 0) {
+                return `${days} day${days !== 1 ? 's' : ''} and ${hours} hour${hours !== 1 ? 's' : ''}`;
+            } else if (hours > 0) {
+                return `${hours} hour${hours !== 1 ? 's' : ''} and ${minutes} minute${minutes !== 1 ? 's' : ''}`;
+            } else {
+                return `${minutes} minute${minutes !== 1 ? 's' : ''}`;
+            }
+        }
+
+        async function deleteScheduledPost(postId) {
+            if (!confirm('Are you sure you want to delete this scheduled post?')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch('/.netlify/functions/delete-scheduled-post', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ postId: postId })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Reload the scheduled posts list
+                    loadScheduledPosts();
+                } else {
+                    alert('Error deleting scheduled post: ' + result.error);
+                }
+            } catch (error) {
+                console.error('Error deleting scheduled post:', error);
+                alert('Error deleting scheduled post');
+            }
+        }
     </script>
 </body>
 </html> 
