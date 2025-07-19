@@ -306,3 +306,10 @@ body {
 }
 
 /* div { outline: 1px solid gray !important; } */
+
+/* Force active navigation to be black */
+body ul#desktopnav li a.active,
+body ul#mobilenav li a.active {
+    color: black !important;
+    font-weight: bold !important;
+}
