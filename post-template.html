@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <meta name="keywords" content="{{KEYWORDS}}">
+    <meta property="og:title" content="{{POST_TITLE}}">
+    <meta property="og:description" content="{{META_DESCRIPTION}}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://roberttolan.com/posts/{{URL_SLUG}}.html">
+    <meta property="og:image" content="https://roberttolan.com/img/robert.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{POST_TITLE}}">
+    <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+    <title>{{POST_TITLE}} - Robert Tolan</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="icon" type="image/x-icon" href="/img/favicon2.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .post-header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #8B008B;
+            padding-bottom: 20px;
+        }
+        
+        .post-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .post-meta {
+            color: #666;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .post-date {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .post-category {
+            background: #8B008B;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+        
+        .post-content {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333;
+        }
+        
+        .post-content h1, .post-content h2, .post-content h3 {
+            color: #8B008B;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .post-content p {
+            margin-bottom: 20px;
+        }
+        
+        .post-content a {
+            color: #8B008B;
+            text-decoration: none;
+        }
+        
+        .post-content a:hover {
+            text-decoration: underline;
+        }
+        
+        .post-content blockquote {
+            border-left: 4px solid #8B008B;
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #666;
+        }
+        
+        .post-content code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .post-content pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .post-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .back-to-posts {
+            color: #8B008B;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+        }
+        
+        .back-to-posts:hover {
+            text-decoration: underline;
+        }
+        
+        .post-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .post-tag {
+            background: #f0f0f0;
+            color: #666;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .newsletter-section h3 {
+            color: #111827;
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .newsletter-section h3 i {
+            color: #8B008B;
+        }
+        
+        .newsletter-section p {
+            color: #6b7280;
+            margin: 0 0 15px 0;
+            font-size: 14px;
+        }
+        
+        .newsletter-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form .form-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            border-color: #8B008B;
+            box-shadow: 0 0 0 3px rgba(139, 0, 139, 0.1);
+        }
+        
+        .newsletter-btn {
+            background: #8B008B;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .newsletter-btn:hover {
+            background: #6a006a;
+        }
+        
+        .newsletter-message {
+            margin-top: 15px;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .newsletter-message.success {
+            background: #f0fdf4;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .newsletter-message.error {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .post-container {
+                padding: 15px;
+            }
+            
+            .post-title {
+                font-size: 24px;
+            }
+            
+            .post-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .newsletter-form .form-row {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                min-width: auto;
+            }
+            
+            .post-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        /* Navigation adjustments for post pages */
+        .desktopleft ul li a[href*="posts.html"] {
+            color: #8B008B;
+            font-weight: bold;
+        }
+        
+        #mobilenav li a[href*="posts.html"] {
+            color: #8B008B;
+            font-weight: bold;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGRVMPLY74"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XGRVMPLY74');
+    </script>
+    <script src="../js/analytics.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/public-config.js"></script>
+    <script src="../js/supabase-newsletter.js"></script>
+</head>
+<body>
+
+<div class="desktopleft">
+    <img src="../img/robert.jpg" id="desktopphoto" width="100%" align="top" alt="Robert Tolan">
+    <ul id="desktopnav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a class="active" href="../posts.html">Posts</a></li>
+        <li><a href="../recommendations.html">Recommendations</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="mailto:robertmtolan1@gmail.com"><i class="fas fa-envelope social-icon"></i>Email</a></li>
+        <li><a href="https://x.com/Rob_Tolan" target="_blank"><i class="fab fa-twitter social-icon"></i>X</a></li>
+    </ul>
+</div>
+
+<h1 id="mobiletop">Robert Tolan</h1>
+<img src="../img/robert.jpg" id="mobilephoto" width="100%" align="top" alt="Robert Tolan">
+<div class="mobileleft">
+    <ul id="mobilenav">
+        <li><a href="../index.html">Home</a></li>
+        <li><a class="active" href="../posts.html">Posts</a></li>
+        <li><a href="../recommendations.html">Recommendations</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="mailto:robertmtolan1@gmail.com"><i class="fas fa-envelope social-icon"></i>Email</a></li>
+        <li><a href="https://twitter.com/Rob_Tolan" target="_blank"><i class="fab fa-twitter social-icon"></i>X</a></li>
+    </ul>
+</div>
+
+<div class="right">
+    <div class="post-container">
+        <article class="post">
+            <header class="post-header">
+                <h1 class="post-title">{{POST_TITLE}}</h1>
+                <div class="post-meta">
+                    <div class="post-date">
+                        <i class="fas fa-calendar"></i>
+                        {{POST_DATE}}
+                    </div>
+                    <div class="post-category">{{POST_CATEGORY}}</div>
+                </div>
+            </header>
+            
+            <div class="post-content">
+                {{POST_CONTENT}}
+            </div>
+            
+            <footer class="post-footer">
+                <a href="../posts.html" class="back-to-posts">
+                    <i class="fas fa-arrow-left"></i> Back to Posts
+                </a>
+                <div class="post-tags">
+                    {{POST_TAGS}}
+                </div>
+            </footer>
+        </article>
+        
+        <!-- Newsletter Signup Section -->
+        <div class="newsletter-section">
+            <h3><i class="fas fa-envelope"></i> Subscribe to My Posts!</h3>
+            <p>Get new posts delivered directly to your inbox.</p>
+
+            <form id="newsletterForm" class="newsletter-form">
+                <div class="form-row">
+                    <input type="text" id="subscriberName" placeholder="Your name (optional)" class="newsletter-input">
+                    <input type="email" id="subscriberEmail" placeholder="Your email address" class="newsletter-input" required>
+                    <button type="submit" class="newsletter-btn">
+                        <i class="fas fa-paper-plane"></i> Subscribe
+                    </button>
+                </div>
+            </form>
+            
+            <div class="newsletter-message" id="newsletterMessage" style="display: none;"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Newsletter signup functionality
+    const newsletterForm = document.getElementById('newsletterForm');
+    const newsletterMessage = document.getElementById('newsletterMessage');
+    const supabaseNewsletter = new SupabaseNewsletter();
+
+    newsletterForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('subscriberEmail').value;
+        const name = document.getElementById('subscriberName').value;
+        const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+        newsletterMessage.style.display = 'none';
+        
+        try {
+            await supabaseNewsletter.addSubscriber(email, name);
+            
+            // Show success message
+            newsletterMessage.className = 'newsletter-message success';
+            newsletterMessage.innerHTML = '<i class="fas fa-check-circle"></i> Successfully subscribed! You\'ll receive new posts via email.';
+            newsletterMessage.style.display = 'block';
+            
+            // Clear form
+            newsletterForm.reset();
+            
+        } catch (error) {
+            // Show error message
+            newsletterMessage.className = 'newsletter-message error';
+            newsletterMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + error.message;
+            newsletterMessage.style.display = 'block';
+        } finally {
+            // Reset button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Subscribe';
+        }
+    });
+});
+</script>
+</body>
+</html> 

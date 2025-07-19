@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - Robert Tolan</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Computer Modern Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        body.light-mode {
+            background: #f8f9fa;
+            color: #333;
+        }
+        
+        .analytics-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        body.light-mode .header {
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        body.light-mode .header h1 {
+            color: #333;
+        }
+        
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .date-range {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .date-range select {
+            background: #444;
+            border: 1px solid #555;
+            color: #ccc;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        body.light-mode .date-range select {
+            background: #e9ecef;
+            border: 1px solid #ddd;
+            color: #666;
+        }
+        
+        .refresh-btn {
+            background: #0066cc;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .refresh-btn:hover {
+            background: #0077ee;
+        }
+        
+        .theme-toggle {
+            background: #444;
+            border: 1px solid #555;
+            color: #ccc;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .theme-toggle:hover {
+            background: #555;
+            color: #fff;
+        }
+        
+        body.light-mode .theme-toggle {
+            background: #e9ecef;
+            border: 1px solid #ddd;
+            color: #666;
+        }
+        
+        body.light-mode .theme-toggle:hover {
+            background: #dee2e6;
+            color: #333;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s ease;
+        }
+        
+        body.light-mode .stat-card {
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .stat-title {
+            font-size: 14px;
+            color: #888;
+            font-weight: 500;
+        }
+        
+        .stat-icon {
+            font-size: 20px;
+            color: #0066cc;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        
+        body.light-mode .stat-value {
+            color: #333;
+        }
+        
+        .stat-change {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .stat-change.positive {
+            color: #4caf50;
+        }
+        
+        .stat-change.negative {
+            color: #f44336;
+        }
+        
+        .stat-change.neutral {
+            color: #888;
+        }
+        
+        /* Charts Section */
+        .charts-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .chart-container {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        body.light-mode .chart-container {
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .chart-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        body.light-mode .chart-title {
+            color: #333;
+        }
+        
+        .chart-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chart-btn {
+            background: #444;
+            border: 1px solid #555;
+            color: #ccc;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+        
+        .chart-btn:hover {
+            background: #555;
+            color: #fff;
+        }
+        
+        .chart-btn.active {
+            background: #0066cc;
+            color: #fff;
+        }
+        
+        /* Tables Section */
+        .tables-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .table-container {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        body.light-mode .table-container {
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+        
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .table-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        body.light-mode .table-title {
+            color: #333;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+        
+        body.light-mode .table th,
+        body.light-mode .table td {
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .table th {
+            font-weight: 600;
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        body.light-mode .table th {
+            color: #666;
+        }
+        
+        .table td {
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+        
+        body.light-mode .table td {
+            color: #333;
+        }
+        
+        .table tr:hover {
+            background: #333;
+        }
+        
+        body.light-mode .table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        /* Loading States */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            color: #888;
+        }
+        
+        .loading i {
+            margin-right: 10px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .charts-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .analytics-container {
+                padding: 15px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .header-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tables-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .date-range {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="analytics-container">
+        <div class="header">
+            <h1><i class="fas fa-chart-line"></i> Analytics Dashboard</h1>
+            <div class="header-controls">
+                <div class="date-range">
+                    <label>Time Range:</label>
+                    <select id="timeRange">
+                        <option value="7">Last 7 days</option>
+                        <option value="30" selected>Last 30 days</option>
+                        <option value="90">Last 90 days</option>
+                        <option value="365">Last year</option>
+                    </select>
+                </div>
+                <button class="refresh-btn" onclick="refreshAnalytics()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-sun"></i> Light Mode
+                </button>
+            </div>
+        </div>
+        
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Total Subscribers</div>
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                </div>
+                <div class="stat-value" id="totalSubscribers">-</div>
+                <div class="stat-change positive" id="subscriberChange">
+                    <i class="fas fa-arrow-up"></i> +12% this month
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Email Open Rate</div>
+                    <div class="stat-icon"><i class="fas fa-envelope-open"></i></div>
+                </div>
+                <div class="stat-value" id="openRate">-</div>
+                <div class="stat-change positive" id="openRateChange">
+                    <i class="fas fa-arrow-up"></i> +5% this month
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Click Rate</div>
+                    <div class="stat-icon"><i class="fas fa-mouse-pointer"></i></div>
+                </div>
+                <div class="stat-value" id="clickRate">-</div>
+                <div class="stat-change neutral" id="clickRateChange">
+                    <i class="fas fa-minus"></i> No change
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Total Posts</div>
+                    <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                </div>
+                <div class="stat-value" id="totalPosts">-</div>
+                <div class="stat-change positive" id="postsChange">
+                    <i class="fas fa-arrow-up"></i> +3 this month
+                </div>
+            </div>
+        </div>
+        
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">Subscriber Growth</div>
+                    <div class="chart-controls">
+                        <button class="chart-btn active" onclick="switchChart('subscribers')">Subscribers</button>
+                        <button class="chart-btn" onclick="switchChart('engagement')">Engagement</button>
+                    </div>
+                </div>
+                <canvas id="mainChart" width="400" height="200"></canvas>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div class="chart-title">Email Performance</div>
+                </div>
+                <canvas id="emailChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+        
+        <!-- Tables Section -->
+        <div class="tables-section">
+            <div class="table-container">
+                <div class="table-header">
+                    <div class="table-title">Top Performing Posts</div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Post Title</th>
+                            <th>Views</th>
+                            <th>Engagement</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="topPostsTable">
+                        <tr>
+                            <td colspan="4" class="loading">
+                                <i class="fas fa-spinner"></i> Loading...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-container">
+                <div class="table-header">
+                    <div class="table-title">Recent Subscribers</div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Date Joined</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentSubscribersTable">
+                        <tr>
+                            <td colspan="3" class="loading">
+                                <i class="fas fa-spinner"></i> Loading...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/public-config.js"></script>
+    <script src="js/supabase-newsletter.js"></script>
+    <script>
+        const supabaseNewsletter = new SupabaseNewsletter();
+        let mainChart, emailChart;
+        let currentChartType = 'subscribers';
+        
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved theme preference or default to dark mode
+        const savedTheme = localStorage.getItem('analyticsTheme') || 'dark';
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            updateThemeButton('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                localStorage.setItem('analyticsTheme', 'dark');
+                updateThemeButton('light');
+            } else {
+                body.classList.add('light-mode');
+                localStorage.setItem('analyticsTheme', 'light');
+                updateThemeButton('dark');
+            }
+        });
+        
+        function updateThemeButton(mode) {
+            if (mode === 'light') {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+            }
+        }
+        
+        // Initialize analytics
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAnalytics();
+            initializeCharts();
+        });
+        
+        // Load analytics data
+        async function loadAnalytics() {
+            try {
+                await Promise.all([
+                    loadSubscriberStats(),
+                    loadEmailStats(),
+                    loadTopPosts(),
+                    loadRecentSubscribers()
+                ]);
+            } catch (error) {
+                console.error('Error loading analytics:', error);
+            }
+        }
+        
+        // Load subscriber statistics
+        async function loadSubscriberStats() {
+            try {
+                const { data: subscribers, error } = await supabase
+                    .from('newsletter_subscribers')
+                    .select('*');
+                
+                if (error) throw error;
+                
+                const totalSubscribers = subscribers.length;
+                const activeSubscribers = subscribers.filter(s => s.status === 'active').length;
+                
+                document.getElementById('totalSubscribers').textContent = totalSubscribers;
+                
+                // Calculate growth (mock data for now)
+                const growth = Math.floor(Math.random() * 20) + 5;
+                const changeElement = document.getElementById('subscriberChange');
+                changeElement.innerHTML = `<i class="fas fa-arrow-up"></i> +${growth}% this month`;
+                changeElement.className = 'stat-change positive';
+                
+            } catch (error) {
+                console.error('Error loading subscriber stats:', error);
+                document.getElementById('totalSubscribers').textContent = 'Error';
+            }
+        }
+        
+        // Load email statistics
+        async function loadEmailStats() {
+            try {
+                // Mock email stats for now
+                const openRate = Math.floor(Math.random() * 30) + 20; // 20-50%
+                const clickRate = Math.floor(Math.random() * 10) + 2; // 2-12%
+                
+                document.getElementById('openRate').textContent = `${openRate}%`;
+                document.getElementById('clickRate').textContent = `${clickRate}%`;
+                
+                // Mock changes
+                const openChange = Math.floor(Math.random() * 10) - 5; // -5 to +5
+                const clickChange = Math.floor(Math.random() * 6) - 3; // -3 to +3
+                
+                const openChangeElement = document.getElementById('openRateChange');
+                const clickChangeElement = document.getElementById('clickRateChange');
+                
+                if (openChange > 0) {
+                    openChangeElement.innerHTML = `<i class="fas fa-arrow-up"></i> +${openChange}% this month`;
+                    openChangeElement.className = 'stat-change positive';
+                } else {
+                    openChangeElement.innerHTML = `<i class="fas fa-arrow-down"></i> ${openChange}% this month`;
+                    openChangeElement.className = 'stat-change negative';
+                }
+                
+                if (clickChange > 0) {
+                    clickChangeElement.innerHTML = `<i class="fas fa-arrow-up"></i> +${clickChange}% this month`;
+                    clickChangeElement.className = 'stat-change positive';
+                } else if (clickChange < 0) {
+                    clickChangeElement.innerHTML = `<i class="fas fa-arrow-down"></i> ${clickChange}% this month`;
+                    clickChangeElement.className = 'stat-change negative';
+                } else {
+                    clickChangeElement.innerHTML = `<i class="fas fa-minus"></i> No change`;
+                    clickChangeElement.className = 'stat-change neutral';
+                }
+                
+            } catch (error) {
+                console.error('Error loading email stats:', error);
+            }
+        }
+        
+        // Load top posts
+        async function loadTopPosts() {
+            try {
+                // Mock top posts data
+                const topPosts = [
+                    { title: 'The Future of Finance', views: 1250, engagement: '8.5%', date: '2024-01-15' },
+                    { title: 'Housing Market Analysis', views: 980, engagement: '7.2%', date: '2024-01-10' },
+                    { title: 'Economic Trends 2024', views: 750, engagement: '6.8%', date: '2024-01-05' },
+                    { title: 'Investment Strategies', views: 620, engagement: '5.9%', date: '2024-01-01' }
+                ];
+                
+                const tableBody = document.getElementById('topPostsTable');
+                tableBody.innerHTML = '';
+                
+                topPosts.forEach(post => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${post.title}</td>
+                        <td>${post.views.toLocaleString()}</td>
+                        <td>${post.engagement}</td>
+                        <td>${new Date(post.date).toLocaleDateString()}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+                
+                document.getElementById('totalPosts').textContent = topPosts.length;
+                document.getElementById('postsChange').innerHTML = '<i class="fas fa-arrow-up"></i> +3 this month';
+                
+            } catch (error) {
+                console.error('Error loading top posts:', error);
+            }
+        }
+        
+        // Load recent subscribers
+        async function loadRecentSubscribers() {
+            try {
+                const { data: subscribers, error } = await supabase
+                    .from('newsletter_subscribers')
+                    .select('*')
+                    .order('created_at', { ascending: false })
+                    .limit(10);
+                
+                if (error) throw error;
+                
+                const tableBody = document.getElementById('recentSubscribersTable');
+                tableBody.innerHTML = '';
+                
+                if (subscribers && subscribers.length > 0) {
+                    subscribers.forEach(subscriber => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${subscriber.email}</td>
+                            <td>${new Date(subscriber.created_at).toLocaleDateString()}</td>
+                            <td><span class="status-${subscriber.status}">${subscriber.status}</span></td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                } else {
+                    tableBody.innerHTML = '<tr><td colspan="3">No subscribers found</td></tr>';
+                }
+                
+            } catch (error) {
+                console.error('Error loading recent subscribers:', error);
+                document.getElementById('recentSubscribersTable').innerHTML = 
+                    '<tr><td colspan="3">Error loading data</td></tr>';
+            }
+        }
+        
+        // Initialize charts
+        function initializeCharts() {
+            // Main chart (subscriber growth)
+            const mainCtx = document.getElementById('mainChart').getContext('2d');
+            mainChart = new Chart(mainCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan 1', 'Jan 8', 'Jan 15', 'Jan 22', 'Jan 29'],
+                    datasets: [{
+                        label: 'Subscribers',
+                        data: [120, 135, 142, 158, 175],
+                        borderColor: '#0066cc',
+                        backgroundColor: 'rgba(0, 102, 204, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#444'
+                            },
+                            ticks: {
+                                color: '#888'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: '#444'
+                            },
+                            ticks: {
+                                color: '#888'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Email performance chart
+            const emailCtx = document.getElementById('emailChart').getContext('2d');
+            emailChart = new Chart(emailCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Opened', 'Clicked', 'Unopened'],
+                    datasets: [{
+                        data: [65, 15, 20],
+                        backgroundColor: ['#4caf50', '#ff9800', '#f44336'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#888',
+                                padding: 20
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Switch chart type
+        function switchChart(type) {
+            currentChartType = type;
+            
+            // Update button states
+            document.querySelectorAll('.chart-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update chart data
+            if (type === 'subscribers') {
+                mainChart.data.datasets[0].label = 'Subscribers';
+                mainChart.data.datasets[0].data = [120, 135, 142, 158, 175];
+            } else if (type === 'engagement') {
+                mainChart.data.datasets[0].label = 'Engagement Rate';
+                mainChart.data.datasets[0].data = [8.5, 9.2, 7.8, 10.1, 8.9];
+            }
+            
+            mainChart.update();
+        }
+        
+        // Refresh analytics
+        function refreshAnalytics() {
+            const refreshBtn = document.querySelector('.refresh-btn');
+            refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
+            refreshBtn.disabled = true;
+            
+            setTimeout(() => {
+                loadAnalytics();
+                refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
+                refreshBtn.disabled = false;
+            }, 1000);
+        }
+        
+        // Time range change
+        document.getElementById('timeRange').addEventListener('change', function() {
+            loadAnalytics();
+        });
+    </script>
+</body>
+</html> 
