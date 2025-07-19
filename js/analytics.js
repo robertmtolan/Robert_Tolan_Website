@@ -121,6 +121,8 @@ document.addEventListener('DOMContentLoaded', function() {
             trackPostInteraction(postName, isExpanded);
         });
     });
+    
+
 });
 
 // Tracking page views with custom dimensions

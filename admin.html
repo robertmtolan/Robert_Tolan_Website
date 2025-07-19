@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Post - Robert Tolan</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Computer Modern Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        body.light-mode {
+            background: #f8f9fa;
+            color: #333;
+        }
+        
+        .editor-container {
+            max-width: 100%;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        body.light-mode .header {
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        body.light-mode .header h1 {
+            color: #333;
+        }
+        
+        .theme-toggle {
+            background: #444;
+            border: 1px solid #555;
+            color: #ccc;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .theme-toggle:hover {
+            background: #555;
+            color: #fff;
+        }
+        
+        body.light-mode .theme-toggle {
+            background: #e9ecef;
+            border: 1px solid #ddd;
+            color: #666;
+        }
+        
+        body.light-mode .theme-toggle:hover {
+            background: #dee2e6;
+            color: #333;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        body.light-mode label {
+            color: #666;
+        }
+        
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #444;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 16px;
+            background: #2a2a2a;
+            color: #e0e0e0;
+            transition: border-color 0.2s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        body.light-mode input[type="text"], 
+        body.light-mode textarea, 
+        body.light-mode select {
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #333;
+        }
+        
+        input[type="text"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #666;
+            background: #333;
+        }
+        
+        body.light-mode input[type="text"]:focus, 
+        body.light-mode textarea:focus, 
+        body.light-mode select:focus {
+            border-color: #0066cc;
+            background: #fff;
+        }
+        
+        textarea {
+            min-height: 400px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+        
+        .toolbar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            padding: 10px;
+            background: #2a2a2a;
+            border-radius: 6px;
+            border: 1px solid #444;
+        }
+        
+        body.light-mode .toolbar {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+        }
+        
+        .toolbar-btn {
+            background: #333;
+            border: 1px solid #555;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #ccc;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .toolbar-btn:hover {
+            background: #444;
+            color: #fff;
+            border-color: #666;
+        }
+        
+        .toolbar-btn i {
+            font-size: 12px;
+        }
+        
+        .tags-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+            min-height: 40px;
+            padding: 8px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 6px;
+        }
+        
+        body.light-mode .tags-input {
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+        
+        .tag {
+            background: #444;
+            color: #e0e0e0;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        body.light-mode .tag {
+            background: #e9ecef;
+            color: #495057;
+        }
+        
+        .tag .remove-tag {
+            cursor: pointer;
+            color: #999;
+            font-size: 10px;
+        }
+        
+        .tag .remove-tag:hover {
+            color: #ff6b6b;
+        }
+        
+        .tag-input {
+            border: none;
+            background: transparent;
+            color: #e0e0e0;
+            font-size: 12px;
+            outline: none;
+            min-width: 60px;
+            flex: 1;
+        }
+        
+        body.light-mode .tag-input {
+            color: #333;
+        }
+        
+        .tag-input::placeholder {
+            color: #666;
+        }
+        
+        body.light-mode .tag-input::placeholder {
+            color: #999;
+        }
+        
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+        }
+        
+        .image-modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid #444;
+        }
+        
+        .image-modal-content h3 {
+            margin: 0 0 20px 0;
+            color: #fff;
+            font-size: 18px;
+        }
+        
+        .image-upload-area {
+            border: 2px dashed #555;
+            border-radius: 6px;
+            padding: 30px;
+            text-align: center;
+            background: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .image-upload-area:hover {
+            background: #444;
+            border-color: #666;
+        }
+        
+        .image-upload-area.dragover {
+            background: #555;
+            color: #fff;
+            border-color: #777;
+        }
+        
+        .image-preview {
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .image-preview img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 6px;
+        }
+        
+        .button {
+            background: #444;
+            color: #e0e0e0;
+            padding: 12px 24px;
+            border: 1px solid #555;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .button:hover {
+            background: #555;
+            color: #fff;
+        }
+        
+        .button:disabled {
+            background: #333;
+            color: #666;
+            cursor: not-allowed;
+        }
+        
+        .button.primary {
+            background: #0066cc;
+            color: #fff;
+            border-color: #0077ee;
+        }
+        
+        .button.primary:hover {
+            background: #0077ee;
+        }
+        
+        .success-message {
+            background: #2d5a2d;
+            color: #b8e6b8;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+            border: 1px solid #3a6a3a;
+        }
+        
+        .error-message {
+            background: #5a2d2d;
+            color: #e6b8b8;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+            border: 1px solid #6a3a3a;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .publish-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        body.light-mode .publish-section {
+            border-top: 1px solid #ddd;
+        }
+        
+        .publish-options {
+            margin-bottom: 20px;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        body.light-mode .checkbox-label {
+            color: #666;
+        }
+        
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+        
+        .checkmark {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #555;
+            border-radius: 3px;
+            display: inline-block;
+            position: relative;
+            background: #333;
+        }
+        
+        body.light-mode .checkmark {
+            border-color: #ddd;
+            background: #fff;
+        }
+        
+        .checkbox-label input[type="checkbox"]:checked + .checkmark:after {
+            content: '✓';
+            position: absolute;
+            top: -2px;
+            left: 2px;
+            color: #fff;
+            font-size: 12px;
+        }
+        
+        body.light-mode .checkbox-label input[type="checkbox"]:checked + .checkmark:after {
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .editor-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <div class="header">
+            <h1>New Post</h1>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-sun"></i> Light Mode
+            </button>
+        </div>
+        
+        <form id="postForm">
+            <div class="form-group">
+                <label for="postTitle">Title</label>
+                <input type="text" id="postTitle" placeholder="Enter your post title..." required>
+            </div>
+            
+            <div class="form-group">
+                <label>Tags</label>
+                <div class="tags-input" id="tagsInput">
+                    <input type="text" class="tag-input" id="tagInput" placeholder="Add tags...">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="postContent">Content</label>
+                <div class="toolbar">
+                    <button type="button" class="toolbar-btn" onclick="formatText('bold')">
+                        <i class="fas fa-bold"></i> Bold
+                    </button>
+                    <button type="button" class="toolbar-btn" onclick="formatText('italic')">
+                        <i class="fas fa-italic"></i> Italic
+                    </button>
+                    <button type="button" class="toolbar-btn" onclick="formatText('link')">
+                        <i class="fas fa-link"></i> Link
+                    </button>
+                    <button type="button" class="toolbar-btn" onclick="openImageModal()">
+                        <i class="fas fa-image"></i> Image
+                    </button>
+                    <button type="button" class="toolbar-btn" onclick="formatText('quote')">
+                        <i class="fas fa-quote-left"></i> Quote
+                    </button>
+                </div>
+                <textarea id="postContent" placeholder="Write your content here..." required></textarea>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="postCategory">Category</label>
+                    <select id="postCategory">
+                        <option value="general">General</option>
+                        <option value="finance">Finance</option>
+                        <option value="housing">Housing</option>
+                        <option value="economics">Economics</option>
+                        <option value="technology">Technology</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="postDate">Publication Date</label>
+                    <input type="date" id="postDate">
+                </div>
+            </div>
+            
+            <div class="publish-section">
+                <div class="publish-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="sendNewsletter" checked>
+                        <span class="checkmark"></span>
+                        Send to newsletter subscribers
+                    </label>
+                </div>
+                <button type="submit" class="button primary" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Publish Post
+                </button>
+            </div>
+        </form>
+        
+        <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i> Post published successfully! RSS feed updated automatically.
+        </div>
+        
+        <div class="error-message" id="errorMessage">
+            <i class="fas fa-exclamation-circle"></i> Error publishing post. Please try again.
+        </div>
+    </div>
+
+    <!-- Image Insert Modal -->
+    <div class="image-modal" id="imageModal">
+        <div class="image-modal-content">
+            <h3><i class="fas fa-image"></i> Insert Image</h3>
+            <div class="image-upload-area" id="modalImageUpload">
+                <p><i class="fas fa-cloud-upload-alt" style="font-size: 24px; margin-bottom: 10px;"></i></p>
+                <p>Click to upload or drag image here</p>
+                <input type="file" id="modalImageInput" accept="image/*" style="display: none;">
+            </div>
+            <div class="image-preview" id="modalImagePreview" style="display: none;">
+                <img id="modalPreviewImg" src="" alt="Preview">
+            </div>
+            <button type="button" class="button primary" id="insertImageBtn" style="display: none;">
+                <i class="fas fa-plus"></i> Insert Image
+            </button>
+            <button type="button" class="button" onclick="closeImageModal()">
+                <i class="fas fa-times"></i> Cancel
+            </button>
+        </div>
+    </div>
+
+    <script src="js/post-manager.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+    <script src="js/supabase-newsletter.js"></script>
+    <script>
+        const postManager = new PostManager();
+        const supabaseNewsletter = new SupabaseNewsletter();
+        let currentImageData = null;
+        let tags = [];
+        
+
+        
+        // Set default date to today
+        document.getElementById('postDate').value = new Date().toISOString().split('T')[0];
+        
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved theme preference or default to dark mode
+        const savedTheme = localStorage.getItem('adminTheme') || 'dark';
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            updateThemeButton('dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                localStorage.setItem('adminTheme', 'dark');
+                updateThemeButton('light');
+            } else {
+                body.classList.add('light-mode');
+                localStorage.setItem('adminTheme', 'light');
+                updateThemeButton('dark');
+            }
+        });
+        
+        function updateThemeButton(mode) {
+            if (mode === 'light') {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+            }
+        }
+        
+        // Tag management
+        const tagInput = document.getElementById('tagInput');
+        const tagsInput = document.getElementById('tagsInput');
+        
+        tagInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ',') {
+                e.preventDefault();
+                const tag = tagInput.value.trim();
+                if (tag && !tags.includes(tag)) {
+                    addTag(tag);
+                }
+                tagInput.value = '';
+            }
+        });
+        
+        function addTag(tag) {
+            tags.push(tag);
+            const tagElement = document.createElement('div');
+            tagElement.className = 'tag';
+            tagElement.innerHTML = `
+                ${tag}
+                <span class="remove-tag" onclick="removeTag('${tag}')">×</span>
+            `;
+            tagsInput.insertBefore(tagElement, tagInput);
+        }
+        
+        function removeTag(tag) {
+            tags = tags.filter(t => t !== tag);
+            renderTags();
+        }
+        
+        function renderTags() {
+            const tagElements = tagsInput.querySelectorAll('.tag');
+            tagElements.forEach(el => el.remove());
+            
+            tags.forEach(tag => {
+                const tagElement = document.createElement('div');
+                tagElement.className = 'tag';
+                tagElement.innerHTML = `
+                    ${tag}
+                    <span class="remove-tag" onclick="removeTag('${tag}')">×</span>
+                `;
+                tagsInput.insertBefore(tagElement, tagInput);
+            });
+        }
+        
+        // Text formatting functions
+        function formatText(type) {
+            const textarea = document.getElementById('postContent');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const selectedText = textarea.value.substring(start, end);
+            
+            let replacement = '';
+            switch(type) {
+                case 'bold':
+                    replacement = `**${selectedText}**`;
+                    break;
+                case 'italic':
+                    replacement = `*${selectedText}*`;
+                    break;
+                case 'link':
+                    const url = prompt('Enter URL:');
+                    if (url) {
+                        replacement = `[${selectedText}](${url})`;
+                    } else {
+                        return;
+                    }
+                    break;
+                case 'quote':
+                    replacement = `> ${selectedText}`;
+                    break;
+            }
+            
+            textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end);
+            textarea.focus();
+            textarea.setSelectionRange(start + replacement.length, start + replacement.length);
+        }
+        
+        // Image modal functions
+        function openImageModal() {
+            document.getElementById('imageModal').style.display = 'block';
+            currentImageData = null;
+            document.getElementById('modalImagePreview').style.display = 'none';
+            document.getElementById('insertImageBtn').style.display = 'none';
+        }
+        
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+        
+        // Image upload handling
+        const modalImageUpload = document.getElementById('modalImageUpload');
+        const modalImageInput = document.getElementById('modalImageInput');
+        const modalImagePreview = document.getElementById('modalImagePreview');
+        const modalPreviewImg = document.getElementById('modalPreviewImg');
+        const insertImageBtn = document.getElementById('insertImageBtn');
+        
+        modalImageUpload.addEventListener('click', () => modalImageInput.click());
+        
+        modalImageUpload.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            modalImageUpload.classList.add('dragover');
+        });
+        
+        modalImageUpload.addEventListener('dragleave', () => {
+            modalImageUpload.classList.remove('dragover');
+        });
+        
+        modalImageUpload.addEventListener('drop', (e) => {
+            e.preventDefault();
+            modalImageUpload.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleModalImageUpload(files[0]);
+            }
+        });
+        
+        modalImageInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleModalImageUpload(e.target.files[0]);
+            }
+        });
+        
+        function handleModalImageUpload(file) {
+            if (!file.type.startsWith('image/')) {
+                alert('Please select an image file');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                currentImageData = e.target.result;
+                modalPreviewImg.src = currentImageData;
+                modalImagePreview.style.display = 'block';
+                insertImageBtn.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+        
+        // Insert image into content
+        insertImageBtn.addEventListener('click', () => {
+            if (currentImageData) {
+                const textarea = document.getElementById('postContent');
+                const cursorPos = textarea.selectionStart;
+                const imageMarkdown = `\n\n![Image](${currentImageData})\n\n`;
+                
+                textarea.value = textarea.value.substring(0, cursorPos) + imageMarkdown + textarea.value.substring(cursorPos);
+                textarea.focus();
+                textarea.setSelectionRange(cursorPos + imageMarkdown.length, cursorPos + imageMarkdown.length);
+                
+                closeImageModal();
+            }
+        });
+        
+        // Form submission
+        document.getElementById('postForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Publishing...';
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            const title = document.getElementById('postTitle').value;
+            const content = document.getElementById('postContent').value;
+            const category = document.getElementById('postCategory').value;
+            const date = document.getElementById('postDate').value;
+            
+            try {
+                const options = {
+                    category: category,
+                    date: date ? new Date(date) : new Date(),
+                    tags: tags
+                };
+                
+                // Add post to website
+                const post = postManager.quickAdd(title, content, options);
+                
+                // Send newsletter if checkbox is checked
+                const sendNewsletter = document.getElementById('sendNewsletter').checked;
+                if (sendNewsletter) {
+                    try {
+                        const newsletterResult = await supabaseNewsletter.sendNewsletter(post);
+                        successMessage.innerHTML = `
+                            <i class="fas fa-check-circle"></i> Post published successfully! 
+                            Newsletter sent to ${newsletterResult.sent} subscribers.
+                        `;
+                    } catch (newsletterError) {
+                        successMessage.innerHTML = `
+                            <i class="fas fa-check-circle"></i> Post published successfully! 
+                            Newsletter sending failed: ${newsletterError.message}
+                        `;
+                    }
+                } else {
+                    successMessage.innerHTML = `
+                        <i class="fas fa-check-circle"></i> Post published successfully!
+                    `;
+                }
+                
+                // Show success
+                successMessage.style.display = 'block';
+                clearForm();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = `❌ Error: ${error.message}`;
+                errorMessage.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Publish Post';
+            }
+        });
+        
+        function clearForm() {
+            document.getElementById('postForm').reset();
+            document.getElementById('postDate').value = new Date().toISOString().split('T')[0];
+            tags = [];
+            renderTags();
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('imageModal').addEventListener('click', (e) => {
+            if (e.target.id === 'imageModal') {
+                closeImageModal();
+            }
+        });
+    </script>
+</body>
+</html> 
