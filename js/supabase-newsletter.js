@@ -9,10 +9,38 @@ class SupabaseNewsletter {
         // Load Supabase client
         const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
         
-        this.supabase = createClient(
-            SUPABASE_CONFIG.url,
-            SUPABASE_CONFIG.publishableKey
-        );
+        // Get configuration from environment variables (Netlify) or fallback to config file (local)
+        const supabaseUrl = this.getConfigValue('SUPABASE_URL', 'SUPABASE_CONFIG?.url');
+        const supabaseKey = this.getConfigValue('SUPABASE_ANON_KEY', 'SUPABASE_CONFIG?.publishableKey');
+        
+        if (!supabaseUrl || !supabaseKey) {
+            console.error('Supabase configuration not found. Please check your environment variables.');
+            return;
+        }
+        
+        this.supabase = createClient(supabaseUrl, supabaseKey);
+    }
+
+    // Helper method to get config values from environment or fallback
+    getConfigValue(envKey, configPath) {
+        // Try environment variable first (Netlify)
+        if (typeof process !== 'undefined' && process.env && process.env[envKey]) {
+            return process.env[envKey];
+        }
+        
+        // Try window environment variables (Netlify client-side)
+        if (typeof window !== 'undefined' && window[envKey]) {
+            return window[envKey];
+        }
+        
+        // Fallback to config file (local development)
+        try {
+            const configValue = eval(configPath);
+            return configValue;
+        } catch (error) {
+            console.warn(`Config fallback failed for ${configPath}:`, error);
+            return null;
+        }
     }
 
     // Add a new subscriber
