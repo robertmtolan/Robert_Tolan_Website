@@ -16,6 +16,7 @@
     <title>{{POST_TITLE}} - Robert Tolan</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css?v=1">
+    <link rel="stylesheet" type="text/css" href="../css/dark-mode.css">
     <link rel="icon" type="image/x-icon" href="/img/favicon2.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -27,19 +28,19 @@
         
         .post-header {
             margin-bottom: 30px;
-            border-bottom: 2px solid black;
+            border-bottom: 2px solid var(--accent-color);
             padding-bottom: 20px;
         }
         
         .post-title {
             font-size: 32px;
-            color: black;
+            color: var(--text-primary);
             margin-bottom: 10px;
             line-height: 1.2;
         }
         
         .post-meta {
-            color: black;
+            color: var(--text-primary);
             font-size: 14px;
             display: flex;
             align-items: center;
@@ -54,8 +55,8 @@
         }
         
         .post-category {
-            background: black;
-            color: white;
+            background: var(--accent-color);
+            color: var(--bg-primary);
             padding: 4px 8px;
             border-radius: 12px;
             font-size: 12px;
@@ -65,11 +66,19 @@
         .post-content {
             font-size: 16px;
             line-height: 1.7;
-            color: black;
+            color: var(--text-primary) !important;
+        }
+        
+        .post-content p {
+            color: var(--text-primary) !important;
+        }
+        
+        .post-content li {
+            color: var(--text-primary) !important;
         }
         
         .post-content h1, .post-content h2, .post-content h3 {
-            color: black;
+            color: var(--text-primary);
             margin-top: 30px;
             margin-bottom: 15px;
         }
@@ -79,7 +88,7 @@
         }
         
         .post-content a {
-            color: black;
+            color: var(--accent-color);
             text-decoration: none;
         }
         
@@ -88,11 +97,11 @@
         }
         
         .post-content blockquote {
-            border-left: 4px solid black;
+            border-left: 4px solid var(--accent-color);
             padding-left: 20px;
             margin: 20px 0;
             font-style: italic;
-            color: black;
+            color: var(--text-primary);
         }
         
         .post-content code {
@@ -129,7 +138,7 @@
         }
         
         .back-to-posts {
-            color: black;
+            color: var(--accent-color);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -157,17 +166,17 @@
         
         /* Newsletter Section */
         .newsletter-section {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 20px;
             margin: 40px 0;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px var(--shadow-color);
         }
         
         .newsletter-section h3 {
-            color: black;
+            color: var(--text-primary);
             margin: 0 0 10px 0;
             font-size: 18px;
             font-weight: 600;
@@ -178,11 +187,11 @@
         }
         
         .newsletter-section h3 i {
-            color: black;
+            color: var(--accent-color);
         }
         
         .newsletter-section p {
-            color: black;
+            color: var(--text-primary);
             margin: 0 0 15px 0;
             font-size: 14px;
         }
@@ -202,21 +211,23 @@
             flex: 1;
             min-width: 200px;
             padding: 10px 12px;
-            border: 1px solid #d1d5db;
+            border: 1px solid var(--input-border);
             border-radius: 8px;
             font-size: 14px;
             font-family: inherit;
+            background: var(--bg-primary);
+            color: var(--text-primary);
         }
         
         .newsletter-input:focus {
             outline: none;
-            border-color: black;
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+            border-color: var(--input-focus);
+            box-shadow: 0 0 0 3px var(--input-focus-shadow);
         }
         
         .newsletter-btn {
-            background: black;
-            color: white;
+            background: var(--accent-color);
+            color: var(--bg-primary);
             border: none;
             padding: 10px 16px;
             border-radius: 8px;
@@ -229,7 +240,7 @@
         }
         
         .newsletter-btn:hover {
-            background: #333333;
+            background: var(--accent-hover);
         }
         
         .newsletter-message {
@@ -240,15 +251,15 @@
         }
         
         .newsletter-message.success {
-            background: #f0fdf4;
-            color: #166534;
-            border: 1px solid #bbf7d0;
+            background: var(--success-bg);
+            color: var(--success-text);
+            border: 1px solid var(--success-border);
         }
         
         .newsletter-message.error {
-            background: #fef2f2;
-            color: #dc2626;
-            border: 1px solid #fecaca;
+            background: var(--error-bg);
+            color: var(--error-text);
+            border: 1px solid var(--error-border);
         }
         
         /* Mobile responsiveness */
@@ -287,7 +298,7 @@
         ul#desktopnav li a.active,
         ul#mobilenav li a.active,
         a.active {
-            color: black !important;
+            color: var(--text-primary) !important;
             font-weight: bold !important;
         }
     </style>
@@ -301,11 +312,14 @@
       gtag('config', 'G-XGRVMPLY74');
     </script>
     <script src="../js/analytics.js"></script>
+    <script src="../js/dark-mode.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="../js/public-config.js"></script>
     <script src="../js/supabase-newsletter.js"></script>
 </head>
 <body>
+
+<button class="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
 
 <div class="desktopleft">
     <img src="../img/robert.jpg" id="desktopphoto" width="100%" align="top" alt="Robert Tolan">
